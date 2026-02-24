@@ -40,3 +40,93 @@ Helper classes with ability to override anything that comes before it
 */
 
 {% include './utilities/_helper.css' %}
+/* Header */
+/* Contenedor general */
+.header--rc {
+  width: 100%;
+}
+
+/* Top bar */
+.header--rc .header__topbar {
+  background: #111;
+}
+
+.header--rc .header__topbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.header--rc .header__topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header--rc .header__topbar-link:hover {
+  text-decoration: underline;
+}
+
+/* Header principal */
+.header--rc .header__main {
+  background: #1a1a1a;
+}
+
+.header--rc .header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 88px; /* ajusta a tu gusto */
+}
+
+/* Logo */
+.header--rc .header__logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Zona derecha: menú + botón */
+.header--rc .header__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Ajuste típico del menú del módulo */
+.header--rc .header__nav ul {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header--rc .header__nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.header--rc .header__nav a:hover {
+  text-decoration: underline;
+}
+
+/* Botón CTA */
+.header--rc .header__cta {
+  background: #c7a600; /* dorado parecido */
+  color: #111;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
