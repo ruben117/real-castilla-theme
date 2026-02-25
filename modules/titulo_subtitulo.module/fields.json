@@ -1,0 +1,44 @@
+[
+  {
+    "name": "title",
+    "label": "Título",
+    "type": "text",
+    "required": true,
+    "default": "¿Qué amenidades ofrece Residencial Real Castilla?"
+  },
+  {
+    "name": "subtitle",
+    "label": "Subtítulo",
+    "type": "text",
+    "default": "AMENIDADES"
+  },
+  {
+    "name": "subtitle_position",
+    "label": "Posición del subtítulo",
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      ["top", "Arriba"],
+      ["bottom", "Abajo"]
+    ],
+    "default": "top"
+  },
+  {
+    "name": "separator_width",
+    "label": "Separador: ancho (%)",
+    "type": "number",
+    "min": 1,
+    "max": 100,
+    "step": 1,
+    "default": 10
+  },
+  {
+    "name": "separator_color",
+    "label": "Separador: color",
+    "type": "color",
+    "default": {
+      "color": "#111111",
+      "opacity": 100
+    }
+  }
+]

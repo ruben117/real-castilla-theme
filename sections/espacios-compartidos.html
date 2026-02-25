@@ -1,0 +1,61 @@
+<!--
+  templateType: section
+  label: Espacios compartidos
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/espacios-compartidos.png
+  description: "Full size background image section separated in two columns. Left column has heading and text and right column has a form."
+-->
+{% dnd_section
+  class="section-overlap-container",
+  padding={
+    "top": 80,
+    "bottom": 80,
+    "left": 0,
+    "right": 0
+  },
+  vertical_alignment="MIDDLE"
+%}
+
+  {# --- COLUMNA IZQUIERDA (Texto) --- #}
+  {% dnd_column
+    width=5,
+    offset=0
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        html={{ context.col1_content or '
+          <div class="overlap-content">
+            <h2>Espacios diseñados para ser compartidos</h2>
+            <p>
+              Sabemos que buscas residencias en venta que no solo ofrezcan metros cuadrados, sino exclusividad, amenidades y un gran diseño; por eso, cada rincón está listo para ser el fondo de tus mejores momentos, de tus reuniones sociales, de tus juntas virtuales o de esa foto familiar que terminará en el grupo de WhatsApp.
+            </p>
+            <a href="#" class="btn-gold">¡Agenda tu visita ahora!</a>
+          </div>
+        ' }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+
+  {# --- COLUMNA DERECHA (Imagen con margen negativo) --- #}
+  {% dnd_column
+    width=7,
+    offset=5
+  %}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/linked_image",
+        img={
+          "src": get_asset_url("../images/espacios-compartidos-dogpark.png"),
+          "alt": "Dog park image",
+          "loading": "lazy",
+          "size_type": "auto",
+          "style": "max-width: 100%; height: auto; display: block;"
+        }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+  {% end_dnd_column %}
+
+{% end_dnd_section %}

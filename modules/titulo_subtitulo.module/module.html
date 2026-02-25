@@ -1,0 +1,31 @@
+{% if module.separator_color %}
+  {% set sep_color = module.separator_color.color %}
+  {% set sep_opacity = (module.separator_color.opacity|int) / 100 %}
+  {% set sep_rgba = "rgba(" ~ (sep_color[1:3]|int(base=16)) ~ "," ~ (sep_color[3:5]|int(base=16)) ~ "," ~ (sep_color[5:7]|int(base=16)) ~ "," ~ sep_opacity ~ ")" %}
+{% endif %}
+
+<div class="rc-heading">
+  <div class="rc-heading__inner">
+
+    {% if module.subtitle and module.subtitle_position == "top" %}
+      <div class="rc-heading__subtitle">{{ module.subtitle }}</div>
+    {% endif %}
+
+    {% if module.title %}
+      <h2 class="rc-heading__title">{{ module.title }}</h2>
+    {% endif %}
+
+    {% if module.subtitle and module.subtitle_position == "bottom" %}
+      <div class="rc-heading__subtitle rc-heading__subtitle--bottom">{{ module.subtitle }}</div>
+    {% endif %}
+
+    {% if module.separator_color %}
+    <div
+      class="rc-heading__separator"
+      style="width: {{ module.separator_width|int }}%; background-color: {{ sep_rgba }};"
+      aria-hidden="true"
+    ></div>
+    {% endif %}
+
+  </div>
+</div>

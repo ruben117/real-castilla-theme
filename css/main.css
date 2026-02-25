@@ -1,4 +1,5 @@
 /* Theme base styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* Tools
 Any animations, or functions used throughout the project.
@@ -40,6 +41,34 @@ Helper classes with ability to override anything that comes before it
 */
 
 {% include './utilities/_helper.css' %}
+/*Variables*/
+:root {
+  --color-primary: #C5A028;
+  --color-secondary: #2D2D2D;
+  --color-text: #8B929F;
+  --color-highlight: #C5A028;
+  --font-family-base: 'Poppins', sans-serif;
+  --font-weight-thin: 100;
+  --font-weight-light: 200;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}
+
+  /*Fonts*/
+*{
+  font-family: "Poppins", sans-serif;
+}
+h1, h2, h3, h4, .font-thin {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: var(--font-weight-light) !important;
+  font-style: normal;
+}
+h1 .hero-custom-typography strong, h2 .hero-custom-typography strong, h3 .hero-custom-typography strong, h4 .hero-custom-typography strong,
+h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
+  font-weight: var(--font-weight-light) !important;
+
+}
+
 /* Header */
 /* Contenedor general */
 .header--rc {
@@ -130,3 +159,133 @@ Helper classes with ability to override anything that comes before it
   justify-content: center;
   white-space: nowrap;
 }
+/*Hero Banner*/
+.hero-custom-typography h1 {
+    font-family: 'Montserrat', sans-serif; /* Asumiendo una fuente similar */
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  
+  .hero-custom-typography strong, 
+  .text-highlight {
+    color: #dcb352; /* Color dorado extraído de la imagen */
+    font-weight: 500;
+  }
+
+  .hero-subheadline {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 25px;
+    display: block;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #dcb352;
+    margin-bottom: 25px;
+    display: block;
+  }
+
+  .body-title {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .body-text {
+    color: #f0f0f0;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    max-width: 90%;
+  }
+
+  .cta-button-gold {
+    background-color: #dcb352;
+    color: #222222;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  
+  .cta-button-gold:hover {
+    background-color: #c49d40;
+    color: #000000;
+  }
+
+  /* Gradiente para oscurecer la imagen y que se lea el texto */
+  .hero-overlay {
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+  }
+  /*Espacios compartidos*/
+  /* Estilos para el contenedor de la sección */
+  .section-overlap-container {
+    overflow: visible; /* Importante para permitir que la imagen se "salga" si es necesario */
+  }
+
+  /* Estilos Título y Texto */
+  .overlap-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #222; /* Color oscuro base */
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  
+  .overlap-content p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  /* Botón Dorado (Reutilizando tu estilo anterior) */
+  .btn-gold {
+    background-color: #dcb352;
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+  .btn-gold:hover {
+    background-color: #c49d40;
+    color: #fff;
+  }
+
+  /* Lógica del Margen Negativo para la Imagen */
+  .overlap-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra para darle profundidad */
+    border-radius: 4px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Solo en Desktop (pantallas mayores a 992px) aplicamos el margen negativo */
+  @media (min-width: 992px) {
+    .overlap-image-wrapper {
+      margin-left: -80px; /* Aquí está la magia del overlap negativo */
+      margin-top: 40px;   /* Un poco de desplazamiento vertical si se desea */
+    }
+  }
+
+  /* En Móvil reseteamos para que se vea normal */
+  @media (max-width: 991px) {
+    .overlap-image-wrapper {
+      margin-left: 0;
+      margin-top: 40px; /* Espacio entre el texto y la imagen en móvil */
+    }
+  }
