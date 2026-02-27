@@ -1,6 +1,7 @@
 [
   {
     "name": "title",
+    "id": "title",
     "label": "Título",
     "type": "text",
     "required": true,
@@ -40,5 +41,63 @@
       "color": "#111111",
       "opacity": 100
     }
+  },
+  {
+    "label": "Estilos",
+    "name": "styles",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "visibility",
+        "label": "Visibilidad",
+        "type": "group",
+        "children": [
+          {
+            "name": "hide_on_desktop",
+            "label": "Ocultar en desktop",
+            "type": "boolean",
+            "default": false
+          },
+          {
+            "name": "hide_on_mobile",
+            "label": "Ocultar en mobile",
+            "type": "boolean",
+            "default": false
+          }
+        ]
+      },
+      {
+        "name": "layout",
+        "label": "Alineación y espaciado",
+        "type": "group",
+        "children": [
+          {
+            "name": "text_align",
+            "label": "Alineación",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["left", "Izquierda"],
+              ["center", "Centro"],
+              ["right", "Derecha"]
+            ],
+            "default": "center"
+          }
+        ]
+      },
+      {
+        "name": "border",
+        "label": "Borde",
+        "type": "group",
+        "children": [
+          {
+            "name": "bd",
+            "label": "Borde",
+            "type": "border"
+          }
+        ]
+      }
+    ]
   }
 ]

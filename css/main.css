@@ -289,3 +289,25 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
       margin-top: 40px; /* Espacio entre el texto y la imagen en móvil */
     }
   }
+  
+  /*Amenidades*/
+  /* Títulos de columna */
+.rc-amenities__coltitle{
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 14px;
+}
+
+/* Ajuste de imágenes (bloque con fondo dorado tipo la captura) */
+.hs_cos_wrapper_type_image img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: HubSpot ya apila columnas, pero ajustamos spacing */
+@media (max-width: 991px){
+  .rc-amenities__coltitle{
+    margin-top: 14px;
+  }
+}

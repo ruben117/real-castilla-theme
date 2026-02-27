@@ -1,10 +1,48 @@
-{% if module.separator_color %}
-  {% set sep_color = module.separator_color.color %}
-  {% set sep_opacity = (module.separator_color.opacity|int) / 100 %}
-  {% set sep_rgba = "rgba(" ~ (sep_color[1:3]|int(base=16)) ~ "," ~ (sep_color[3:5]|int(base=16)) ~ "," ~ (sep_color[5:7]|int(base=16)) ~ "," ~ sep_opacity ~ ")" %}
-{% endif %}
+{% set mid = name|replace(" ", "_")|replace("-", "_") %}
 
-<div class="rc-heading">
+{# Separador color RGBA #}
+{% set sep_color = module.separator_color.color %}
+{% set sep_opacity = (module.separator_color.opacity|int) / 100 %}
+{% set sep_rgba = sep_color ? "rgba(" ~ (sep_color[1:3]|int(base=16)) ~ "," ~ (sep_color[3:5]|int(base=16)) ~ "," ~ (sep_color[5:7]|int(base=16)) ~ "," ~ sep_opacity ~ ")" : "rgba(0,0,0,1)" %}
+
+{# Helpers spacing #}
+{% set p = module.styles.layout.padding %}
+{% set m = module.styles.layout.margin %}
+
+{% require_css %}
+<style>
+  .rc-heading--{{ mid }}{
+    text-align: {{ module.styles.layout.text_align }};
+    padding: {{ p.top }}px {{ p.right }}px {{ p.bottom }}px {{ p.left }}px;
+    margin: {{ m.top }}px {{ m.right }}px {{ m.bottom }}px {{ m.left }}px;
+    {{ module.styles.background.bg.css if module.styles.background.bg }}
+    {{ module.styles.border.bd.css if module.styles.border.bd }}
+  }
+
+  /* Tipografías */
+  .rc-heading--{{ mid }} .rc-heading__subtitle{
+    {{ module.styles.typography.subtitle_typography.css if module.styles.typography.subtitle_typography }}
+  }
+  .rc-heading--{{ mid }} .rc-heading__title{
+    {{ module.styles.typography.title_typography.css if module.styles.typography.title_typography }}
+  }
+
+  /* Visibilidad */
+  {% if module.styles.visibility.hide_on_desktop %}
+  @media (min-width: 992px){
+    .rc-heading--{{ mid }}{ display:none !important; }
+  }
+  {% endif %}
+
+  {% if module.styles.visibility.hide_on_mobile %}
+  @media (max-width: 991px){
+    .rc-heading--{{ mid }}{ display:none !important; }
+  }
+  {% endif %}
+</style>
+{% end_require_css %}
+
+<div class="rc-heading rc-heading--{{ mid }}">
   <div class="rc-heading__inner">
 
     {% if module.subtitle and module.subtitle_position == "top" %}
@@ -19,13 +57,11 @@
       <div class="rc-heading__subtitle rc-heading__subtitle--bottom">{{ module.subtitle }}</div>
     {% endif %}
 
-    {% if module.separator_color %}
     <div
       class="rc-heading__separator"
       style="width: {{ module.separator_width|int }}%; background-color: {{ sep_rgba }};"
       aria-hidden="true"
     ></div>
-    {% endif %}
 
   </div>
 </div>

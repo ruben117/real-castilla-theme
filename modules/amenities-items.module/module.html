@@ -1,0 +1,31 @@
+{% set icon_size = module.styles.icon_size|default(56) %}
+{% set gap = module.styles.gap|default(12) %}
+{% set align = module.styles.text_align|default("left") %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .rc-amenity-item{
+    --rc-icon-size: {{ icon_size }}px;
+    --rc-gap: {{ gap }}px;
+    text-align: {{ align }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="rc-amenity-item">
+
+  {% if module.icon and module.icon.src %}
+    <div class="rc-amenity-item__icon">
+      <img src="{{ module.icon.src|escape_url }}"
+           alt="{{ module.icon.alt|default('Imagen')|escape_attr }}"
+           loading="lazy">
+    </div>
+  {% endif %}
+
+  <div class="rc-amenity-item__text">
+    {{ module.content }}
+  </div>
+
+</div>

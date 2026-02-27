@@ -1,0 +1,54 @@
+[
+  {
+    "name": "icon",
+    "label": "Imagen",
+    "type": "image",
+    "responsive": true,
+    "resizable": true
+  },
+  {
+    "name": "content",
+    "label": "Texto",
+    "type": "richtext",
+    "required": true,
+    "default": "<p><strong>Dog Park:</strong> Un espacio exclusivo donde tus mascotas son tratadas como parte fundamental de la familia.</p>"
+  },
+  {
+    "name": "styles",
+    "label": "Estilos",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "icon_size",
+        "label": "Tamaño imagen (px)",
+        "type": "number",
+        "min": 24,
+        "max": 120,
+        "step": 1,
+        "default": 56
+      },
+      {
+        "name": "gap",
+        "label": "Separación imagen-texto (px)",
+        "type": "number",
+        "min": 0,
+        "max": 40,
+        "step": 1,
+        "default": 12
+      },
+      {
+        "name": "text_align",
+        "label": "Alineación",
+        "type": "choice",
+        "display": "select",
+        "choices": [
+          ["left", "Izquierda"],
+          ["center", "Centro"],
+          ["right", "Derecha"]
+        ],
+        "default": "left"
+      }
+    ]
+  }
+]
