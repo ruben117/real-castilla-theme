@@ -1,0 +1,128 @@
+.rc-models-slider{
+  width: 100%;
+  position: relative;
+}
+
+.rc-models-slider__viewport{
+  overflow: hidden;
+  width: 100%;
+  outline: none;
+}
+
+.rc-models-slider__track{
+  display: flex;
+  gap: var(--rc-gap, 18px);
+  will-change: transform;
+  transition: transform .35s ease;
+  align-items: flex-start;
+}
+
+.rc-models-slide{
+  flex: 0 0 var(--rc-inactive, 20%);
+  background: transparent;
+  min-width: 0;
+  display: block;
+}
+
+/* Activo */
+.rc-models-slide.is-active{
+  flex-basis: var(--rc-active, 70%);
+}
+
+/* Slide "peek" (asomado) */
+.rc-models-slide.is-peek{
+  flex-basis: var(--rc-peek, 10%);
+}
+
+/* Solo mostrar body en activo */
+.rc-models-slide__body{
+  display: none;
+  margin-top: 12px;
+}
+
+.rc-models-slide.is-active .rc-models-slide__body{
+  display: block;
+}
+
+.rc-models-slide__head{
+  margin-bottom: 10px;
+}
+
+.rc-models-slide__title{
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+
+.rc-models-slide__subtitle{
+  margin: 0;
+  opacity: .75;
+  font-size: 13px;
+}
+
+/* Imagen */
+.rc-models-slide__media{
+  border-radius: 6px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.rc-models-slide__media img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Botones */
+.rc-models-slide__actions{
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.rc-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.rc-btn--ghost{
+  border: 1px solid rgba(199,166,0,.6);
+  color: #c7a600;
+  background: transparent;
+}
+
+.rc-btn--solid{
+  background: #111;
+  color: #fff;
+}
+
+/* Controls */
+.rc-models-slider__controls{
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+}
+
+.rc-models-slider__btn{
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0,0,0,.15);
+  background: #fff;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* Responsive: en mobile mejor 1 por vista */
+@media (max-width: 991px){
+  .rc-models-slide,
+  .rc-models-slide.is-active,
+  .rc-models-slide.is-peek{
+    flex-basis: 85%;
+  }
+}

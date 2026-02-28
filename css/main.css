@@ -289,7 +289,7 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
       margin-top: 40px; /* Espacio entre el texto y la imagen en móvil */
     }
   }
-  
+
   /*Amenidades*/
   /* Títulos de columna */
 .rc-amenities__coltitle{
@@ -310,4 +310,19 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   .rc-amenities__coltitle{
     margin-top: 14px;
   }
+}
+
+/*video*/
+.rc-welcome-video{
+  max-width: 920px;
+  margin: 28px auto 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+.rc-welcome-video__media{
+  width: 100%;
+  height: auto;
+  display: block;
 }

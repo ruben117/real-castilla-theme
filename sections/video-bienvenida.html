@@ -1,0 +1,67 @@
+<!--
+  templateType: section
+  label: Bienvenida video
+  isAvailableForNewContent: true
+  screenshotPath: ../images/section-previews/bienvenida-video.png
+  description: "Section with black background, heading + text and an HTML5 video sourced from HubSpot files."
+-->
+{% dnd_section
+  background_color="rgba(0,0,0,1)",
+  padding={
+    "default": {
+      "top": 90,
+      "right": 20,
+      "bottom": 90,
+      "left": 20
+    },
+    "mobile": {
+      "top": 60,
+      "right": 20,
+      "bottom": 60,
+      "left": 20
+    }
+  },
+  vertical_alignment="MIDDLE"
+%}
+  {% dnd_column
+    offset=0,
+    width=12
+  %}
+
+    {# ===== Heading (módulo default/global) ===== #}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/header",
+        header_tag="h2",
+        value={{ context.heading_title or "2Elige el escenario de tu nueva vidas" }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# ===== Texto (richtext default) ===== #}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        html={{ context.heading_text or "<p style='text-align:center; max-width:760px; margin:10px auto 0; color: rgba(255,255,255,.75);'>Descubre por qué vivir en Real Castilla es dar el paso hacia un futuro con mayor comodidad, plusvalía y bienestar.</p>" }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %}
+
+    {# ===== Video (usando rich_text para evitar embed_code) ===== #}
+    {% dnd_row %}
+      {% dnd_module
+        path="@hubspot/rich_text",
+        html={{
+          "<div class='rc-welcome-video'>
+             <video class='rc-welcome-video__media' controls playsinline preload='metadata'>
+               <source src='" ~ (context.video_src or get_asset_url("../video/real-castilla-home.mp4")) ~ "' type='video/mp4'>
+               Tu navegador no soporta video HTML5.
+             </video>
+           </div>"
+        }}
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_row %} 
+
+  {% end_dnd_column %}
+{% end_dnd_section %}
