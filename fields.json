@@ -20,7 +20,7 @@
           }
         },
         "default": {
-          "color": "#494A52"
+          "color": "#C5A028"
         }
       },
       {
@@ -67,7 +67,7 @@
         },
         "default": {
           "fallback": "sans-serif",
-          "font": "Lato",
+          "font": "Poppins",
           "font_set": "GOOGLE"
         }
       },
@@ -89,7 +89,7 @@
         },
         "default": {
           "fallback": "serif",
-          "font": "Merriweather",
+          "font": "Poppins",
           "font_set": "GOOGLE"
         }
       }
@@ -150,7 +150,7 @@
               "styles": {
                 "text-decoration": "none"
               },
-              "variant": "700"
+              "variant": "200"
             }
           },
           {
@@ -191,7 +191,7 @@
               "styles": {
                 "text-decoration": "none"
               },
-              "variant": "700"
+              "variant": "200"
             }
           },
           {

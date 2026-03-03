@@ -8,31 +8,69 @@
     class="footer__container content-wrapper"
   %}
 
-    {# Social follow and copyright #}
-
+    {# Row 1: 3 columns (logo + logo + copyright) #}
     {% dnd_section %}
-      {% dnd_column %}
+
+      {# Col 1: Logo Real Castilla #}
+      {% dnd_column offset=0, width=3 %}
         {% dnd_row %}
-          {% dnd_module path="../../modules/social-follow" %}
-            {% module_attribute "social_link" is_json=True %}
-              [
-                {"social_account": "facebook-f"},
-                {"social_account": "linkedin-in"},
-                {"social_account": "twitter"},
-                {"social_account": "instagram"}
-              ]
-            {% end_module_attribute %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            img={
+              "alt": "Real Castilla",
+              "loading": "lazy",
+              "size_type": "auto",
+              "src": context.footer_logo_left or get_asset_url("../../images/logotipo-real-castilla.png")
+            }
+          %}
           {% end_dnd_module %}
         {% end_dnd_row %}
-        {% dnd_row
-          margin={
-            "top": 12,
-            "bottom": 12
-          }
-        %}
+      {% end_dnd_column %}
+
+      {# Col 2: Logo Vinte #}
+      {% dnd_column offset=3, width=3 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/linked_image",
+            img={
+              "alt": "Vinte",
+              "loading": "lazy",
+              "size_type": "auto",
+              "src": context.footer_logo_center or get_asset_url("../../images/logotipo-vinte-footer.png")
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+      {# Col 3: Copyright largo + año #}
+      {% dnd_column offset=6, width=6 %}
+        {% dnd_row %}
           {% dnd_module
             path="@hubspot/rich_text",
-            html='<div style="text-align: center; font-size: 0.7rem;"><span>© {{ year }} All rights reserved.</span></div>'
+            html={{
+              context.footer_copyright_long
+              or
+              "<div class='rc-footer__legal'>© " ~ year ~ ", Corporativo Vinte © Vinte 2022. Todos los derechos reservados. PROMOTORA DE VIVIENDAS INTEGRALES SA DE CV, AVENIDA VIA REAL MZ. 16 LT. 1 LOCAL 1, FRACCIONAMIENTO REAL DEL SOL, TECAMAC, MEXICO 55770, México, Teléfono: 5550107360.</div>"
+            }}
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+
+    {% end_dnd_section %}
+
+    {# Row 2: Single column copyright Real Castilla #}
+    {% dnd_section %}
+      {% dnd_column offset=0, width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="@hubspot/rich_text",
+            html={{
+              context.footer_copyright_bottom
+              or
+              "<div class='rc-footer__bottom'>© " ~ year ~ " Real Castilla – Comunidad Vinte. Exclusividad Garantizada.</div>"
+            }}
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}

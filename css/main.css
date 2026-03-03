@@ -326,3 +326,150 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   height: auto;
   display: block;
 }
+
+/*Contacto con formulario*/
+/* Separador izq */
+.rc-form-section__sep{
+  width: 60px;
+  height: 2px;
+  background: #c7a600;
+  margin-top: 18px;
+}
+
+/* Wrapper para estilos del form */
+.rc-contact-form{
+  background: #fff;
+  padding: 26px;
+  border-radius: 2px;
+  max-width: 480px;
+  margin-left: auto;
+}
+
+/* Estilos dentro del form de HubSpot */
+.rc-contact-form .hs-form{
+  width: 100%;
+}
+
+.rc-contact-form .hs-input{
+  width: 100% !important;
+  border: 1px solid #e6e6e6;
+  padding: 12px 12px;
+  height: auto;
+}
+
+.rc-contact-form .hs-form-field{
+  margin-bottom: 12px;
+}
+
+.rc-contact-form .hs-button{
+  width: 100%;
+  background: #c7a600;
+  border: 0;
+  color: #111;
+  padding: 12px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rc-contact-form .hs-button:hover{
+  opacity: .92;
+}
+
+/*Ubicación*/
+/* Ubicación: título grande centrado */
+.hs_cos_wrapper_type_header h2{
+  text-align: center;
+}
+
+/* Si no quieres afectar otros h2 globales, dime y lo encapsulo con clase wrapper */
+.rc-location__map iframe{
+  border-radius: 10px;
+}
+
+/* Contacto */
+.rc-location__contact{
+  padding-left: 18px;
+}
+
+.rc-location__label{
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  opacity: .9;
+}
+
+.rc-location__item{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.rc-location__icon{
+  width: 22px;
+  flex: 0 0 22px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.rc-location__text{
+  opacity: .75;
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+/* Responsive: apilar columnas */
+@media (max-width: 991px){
+  .rc-location__contact{
+    padding-left: 0;
+    margin-top: 18px;
+  }
+}
+
+/*Footer*/
+.footer{
+  background: #fff;
+}
+
+.footer .footer__container{
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+.footer .footer__container .dnd-section{
+  padding: 0;
+}
+.rc-footer__legal{
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(0,0,0,.45);
+}
+
+.rc-footer__bottom{
+  margin-top: 18px;
+  padding-top: 14px;
+  font-size: 12px;
+  color: rgba(0,0,0,.45);
+}
+
+/* Alinear logos visualmente */
+.footer .hs_cos_wrapper_type_linked_image{
+  display: flex;
+  align-items: center;
+}
+
+.footer .hs_cos_wrapper_type_linked_image img{
+  max-height: 82px;
+  width: auto;
+  display: block;
+}
+
+/* Responsive: apilar y centrar */
+@media (max-width: 991px){
+  .rc-footer__legal{ text-align: left; margin-top: 12px; }
+  .footer .hs_cos_wrapper_type_linked_image{ justify-content: flex-start; }
+}
