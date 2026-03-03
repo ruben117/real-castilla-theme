@@ -1,0 +1,206 @@
+/* Wrapper */
+.rc-hero-slider{
+  position: relative;
+  min-height: var(--rc-hero-minh, 680px);
+  overflow: hidden;
+}
+
+/* overlay (gradiente) */
+.rc-hero-slider::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0) 100%);
+}
+
+/* Slides */
+.rc-hero-slider__slides{
+  position: relative;
+  height: 100%;
+}
+
+.rc-hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+
+.rc-hero-slide.is-active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* BG */
+.rc-hero-slide__bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rc-hero-slide[data-align="middle"] .rc-hero-slide__bg{ object-position: center center; }
+.rc-hero-slide[data-align="bottom"] .rc-hero-slide__bg{ object-position: center bottom; }
+
+/* Content */
+.rc-hero-slide__inner{
+  position: relative;
+  z-index: 2;
+  padding-top: 180px;  /* compensa header overlay */
+  padding-bottom: 90px;
+}
+
+.rc-hero-slide__grid{
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.rc-hero-slide__left{
+  flex: 0 0 58%;
+  min-width: 0;
+}
+
+.rc-hero-slide__right{
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.rc-hero-slide__fg{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Bullets */
+.rc-hero-bullets{
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.rc-hero-bullet{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+  padding: 0;
+}
+
+.rc-hero-bullet.is-active{
+  background: var(--rc-gold, #C5A028);
+}
+
+/* Ajustes a tus clases existentes */
+.hero-custom-typography strong,
+.text-highlight{
+  color: var(--rc-gold, #C5A028);
+}
+
+.hero-divider{
+  background-color: var(--rc-gold, #C5A028);
+}
+
+.cta-button-gold{
+  background-color: var(--rc-gold, #C5A028);
+}
+
+.cta-button-gold:hover{
+  background-color: #b89222;
+}
+
+/* Responsive */
+@media (max-width: 991px){
+  .rc-hero-slide__inner{ padding-top: 150px; }
+  .rc-hero-slide__grid{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rc-hero-slide__left{ width: 100%; flex-basis: auto; }
+  .rc-hero-slide__right{ width: 100%; justify-content: flex-start; }
+  .rc-hero-slide__fg{ max-width: 420px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .rc-hero-slide{ transition: none; }
+}
+
+
+/* ===== FULL BLEED (fondo a todo el viewport) ===== */
+.rc-hero-slider--fullbleed{
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);   /* rompe el wrapper sin tocar el layout global */
+  margin-right: calc(50% - 50vw);
+}
+
+/* El slider NO debe colapsar (evita que se vea "la imagen 3") */
+.rc-hero-slider{
+  position: relative;
+  min-height: var(--rc-hero-minh, 680px);
+  overflow: hidden;
+}
+
+/* overlay */
+.rc-hero-slider::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /*background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0) 100%);*/
+}
+
+/* Slides ocupan el alto del slider */
+.rc-hero-slider__slides{
+  position: relative;
+  height: 100%;
+  min-height: inherit; /* importante */
+}
+
+/* Cada slide cubre todo el hero */
+.rc-hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s ease;
+}
+
+.rc-hero-slide.is-active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Background img: SIEMPRE full cover */
+.rc-hero-slide__bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* align vertical (middle/bottom) */
+.rc-hero-slide[data-align="middle"] .rc-hero-slide__bg{ object-position: center center; }
+.rc-hero-slide[data-align="bottom"] .rc-hero-slide__bg{ object-position: center bottom; }
+
+/* Contenido: queda dentro del wrapper */
+.rc-hero-slide__inner{
+  position: relative;
+  z-index: 2;
+  padding-top: 180px;  /* compensa header overlay */
+  padding-bottom: 90px;
+}
+
+/* Responsive */
+@media (max-width: 991px){
+  .rc-hero-slider{ min-height: 620px; }
+  .rc-hero-slide__inner{ padding-top: 150px; }
+}

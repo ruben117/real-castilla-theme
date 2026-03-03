@@ -47,12 +47,21 @@ Helper classes with ability to override anything that comes before it
   --color-secondary: #2D2D2D;
   --color-text: #8B929F;
   --color-highlight: #C5A028;
+  --color-highlight-secondary: #000000;
   --font-family-base: 'Poppins', sans-serif;
   --font-weight-thin: 100;
   --font-weight-light: 200;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
   --font-size-menu: 16px;
+  --font-size-base: 14px;
+  --font-size-heading: 32px;
+  --font-size-subheading: 18px;
+  --font-size-highlight: 16px;
+}
+.padding-section{
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
 }
 
   /*Fonts*/
@@ -69,6 +78,55 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   font-weight: var(--font-weight-light) !important;
 
 }
+p, p span{
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+a, a:hover{text-decoration: none !important;}
+
+/*Theme*/
+
+/* Botón Dorado (Reutilizando tu estilo anterior) */
+.btn {
+  padding: 12px 30px;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 2px;
+  transition: background 0.3s;
+  font-size: var(--font-size-highlight);
+}
+.btn:hover {
+  font-weight: 600 !important;
+}
+
+.btn-gold{
+  background-color: var(--color-primary);
+  color: #fff;
+}
+.btn-gold:hover {
+  background-color: var(--color-highlight-secondary);
+  color: #fff;
+}
+
+.btn-gold-black{
+  background-color: var(--color-primary);
+  color: var(--color-secondary)
+}
+.btn-gold-black:hover {
+  background-color: #fff;
+  color: var(--color-highlight-secondary);
+}
+
+.btn-black{
+  background-color: var(--color-highlight-secondary);
+  color: #fff;
+}
+.btn-black:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+
 
 /* Header */
 /* Contenedor general */
@@ -287,6 +345,7 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   .hero-overlay {
     background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
   }
+
   /*Espacios compartidos*/
   /* Estilos para el contenedor de la sección */
   .section-overlap-container {
@@ -304,25 +363,9 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   
   .overlap-content p {
     color: #666;
-    font-size: 16px;
+    font-size: var(--font-size-base);
     line-height: 1.6;
     margin-bottom: 30px;
-  }
-
-  /* Botón Dorado (Reutilizando tu estilo anterior) */
-  .btn-gold {
-    background-color: #dcb352;
-    color: #fff;
-    padding: 12px 30px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    border-radius: 2px;
-    transition: background 0.3s;
-  }
-  .btn-gold:hover {
-    background-color: #c49d40;
-    color: #fff;
   }
 
   /* Lógica del Margen Negativo para la Imagen */
