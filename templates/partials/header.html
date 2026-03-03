@@ -160,7 +160,7 @@
     <div class="header__language-switcher--label-current"> {{ locale_name(locale) }}</div>
   {% endif %}
 {% endmacro %}
-<header class="header header--rc">
+<header class="header header--rc header--overlay" data-rc-sticky-header>
 
   {# Accesibilidad #}
   <a href="#main-content" class="header__skip">Skip to content</a>
@@ -198,7 +198,7 @@
 
         {# Botón CTA (simple link; si quieres, lo volvemos module) #}
         <a class="header__cta" href="#agenda-demo">
-          Agenda una demostracion
+          Agenda una demo
         </a>
       </div>
 

@@ -52,6 +52,7 @@ Helper classes with ability to override anything that comes before it
   --font-weight-light: 200;
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+  --font-size-menu: 16px;
 }
 
   /*Fonts*/
@@ -117,6 +118,10 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
 .header--rc .header__logo {
   display: flex;
   align-items: center;
+  padding: 0;
+  margin: 0;
+  max-width: 147px;
+  padding-top: 7px;
 }
 
 /* Zona derecha: menú + botón */
@@ -130,16 +135,23 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
 .header--rc .header__nav ul {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 13px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .header--rc .header__nav a {
+  font-size: var(--font-size-menu);
   color: #fff;
   text-decoration: none;
   font-weight: 600;
+}
+.header--rc .header__nav .menu__link {
+  font-size: var(--font-size-menu);
+}
+.header--rc .header__nav .menu__item--depth-1 {
+    padding: 0px 5px;
 }
 
 .header--rc .header__nav a:hover {
@@ -148,17 +160,67 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
 
 /* Botón CTA */
 .header--rc .header__cta {
-  background: #c7a600; /* dorado parecido */
+  background: #c7a600;
   color: #111;
   text-decoration: none;
-  font-weight: 700;
-  padding: 12px 18px;
+  font-weight: 600;
+  padding: 7px 20px;
   border-radius: 2px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+  font-size: var(--font-size-menu);
 }
+/* ===== Overlay + Sticky behavior ===== */
+.header--rc.header--overlay{
+  position: fixed;            /* siempre encima */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;   /* fondo transparente para ver el hero debajo */
+}
+
+/* Al estar sobre el hero, el topbar + main deben ser translúcidos */
+.header--rc.header--overlay .header__topbar{
+  background: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header--rc.header--overlay .header__main{
+  background: rgba(26, 26, 26, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background .25s ease, box-shadow .25s ease;
+}
+
+/* Estado sticky (cuando ya scrolleaste) */
+.header--rc.header--overlay.is-sticky .header__topbar{
+  background: rgba(17, 17, 17, 0.92);
+}
+
+.header--rc.header--overlay.is-sticky .header__main{
+  background: rgba(26, 26, 26, 0.92);
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+
+/* (Opcional) mejorar clicabilidad sobre imágenes */
+.header--rc.header--overlay .header__nav a{
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
+}
+
+/* Evita que anchors queden ocultos detrás del header fijo */
+:root{
+  --rc-header-offset: 122px; /* 34px topbar + 88px main */
+}
+
+[id]{
+  scroll-margin-top: var(--rc-header-offset);
+}
+
+
 /*Hero Banner*/
 .hero-custom-typography h1 {
     font-family: 'Montserrat', sans-serif; /* Asumiendo una fuente similar */

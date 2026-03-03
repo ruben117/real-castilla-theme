@@ -119,3 +119,19 @@
     }
   });
 })();
+
+// Sticky header on scroll
+(function () {
+  const header = document.querySelector('[data-rc-sticky-header]');
+  if (!header) return;
+
+  const STICKY_AT = 20; // px de scroll para activar el sticky
+
+  const onScroll = () => {
+    if (window.scrollY > STICKY_AT) header.classList.add('is-sticky');
+    else header.classList.remove('is-sticky');
+  };
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
