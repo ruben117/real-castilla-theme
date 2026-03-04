@@ -6,17 +6,10 @@
   description: "Section with three columns to list amenities. Each column has an image, a title and a list of amenities with icons."
 -->
 {% dnd_section
-  background_image={
-    "backgroundPosition": "MIDDLE_CENTER",
-    "backgroundSize": "cover",
-    "imageUrl": context.background_image or get_asset_url("../images/large-placeholder-image.png")
-  },
   padding={
     "default": {
-      "top": 140,
-      "right": 20,
-      "bottom": 160,
-      "left": 20
+      "top": 60,
+      "bottom": 120
     },
     "mobile": {
       "top": 80,
@@ -68,7 +61,7 @@
             {% dnd_row %}
                 {% dnd_module
                     path="@hubspot/rich_text",
-                    html={{ context.column_one_content or "<h3>Bienestar y Recreación</h3>" }}
+                    html={{ context.column_one_content or "<h3 class='rc-amenities__coltitle'>Bienestar y Recreación</h3>" }}
                 %}
                 {% end_dnd_module %}
             {% end_dnd_row %}
@@ -132,7 +125,7 @@
             {% dnd_row %}
                 {% dnd_module
                     path="@hubspot/rich_text",
-                    html={{ context.column_two_content or "<h3>Seguridad e Infraestructura</h3>" }}
+                    html={{ context.column_two_content or "<h3 class='rc-amenities__coltitle'>Seguridad e Infraestructura</h3>" }}
                 %}
                 {% end_dnd_module %}
             {% end_dnd_row %}
@@ -196,7 +189,7 @@
             {% dnd_row %}
                 {% dnd_module
                     path="@hubspot/rich_text",
-                    html={{ context.column_three_content or "<h3>Conectividad y periferia</h3>" }}
+                    html={{ context.column_three_content or "<h3 class='rc-amenities__coltitle'>Conectividad y periferia</h3>" }}
                 %}
                 {% end_dnd_module %}
             {% end_dnd_row %}

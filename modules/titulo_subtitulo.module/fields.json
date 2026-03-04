@@ -38,7 +38,7 @@
     "label": "Separador: color",
     "type": "color",
     "default": {
-      "color": "#111111",
+      "color": "#8B929F",
       "opacity": 100
     }
   },

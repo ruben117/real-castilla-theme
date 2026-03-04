@@ -33,7 +33,8 @@
       {% dnd_module
         path="@hubspot/header",
         header_tag="h2",
-        value={{ context.heading_title or "2Elige el escenario de tu nueva vidas" }}
+        value={{ context.heading_title or "Elige el escenario de tu nueva vidas" }},
+        extra_classes="heading-video"
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}
@@ -49,19 +50,17 @@
 
     {# ===== Video (usando rich_text para evitar embed_code) ===== #}
     {% dnd_row %}
-      {% dnd_module
-        path="@hubspot/rich_text",
-        html={{
-          "<div class='rc-welcome-video'>
-             <video class='rc-welcome-video__media' controls playsinline preload='metadata'>
-               <source src='" ~ (context.video_src or get_asset_url("../video/real-castilla-home.mp4")) ~ "' type='video/mp4'>
-               Tu navegador no soporta video HTML5.
-             </video>
-           </div>"
-        }}
-      %}
+      {% dnd_module path="@hubspot/rich_text" %}
+        {% module_attribute "html" %}
+          <div class='rc-welcome-video'>
+            <video class='rc-welcome-video__media' controls playsinline preload='metadata'>
+              <source src='{{ get_asset_url("../video/real-castilla-home.mp4") }}' type='video/mp4'>
+              Tu navegador no soporta video HTML5.
+            </video>
+          </div>
+        {% end_module_attribute %}
       {% end_dnd_module %}
-    {% end_dnd_row %} 
+    {% end_dnd_row %}
 
   {% end_dnd_column %}
 {% end_dnd_section %}

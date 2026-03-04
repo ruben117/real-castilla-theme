@@ -3,6 +3,7 @@
   flex-direction: column;   /* 🔥 Esto crea las 2 filas */
   align-items: flex-start;
   gap: var(--rc-gap, 12px);
+  margin-bottom: 30px;
 }
 
 .rc-amenity-item__icon{
@@ -23,12 +24,13 @@
 
 .rc-amenity-item__text p{
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   line-height: 1.45;
   opacity: .85;
 }
 
 .rc-amenity-item__text strong{
   font-weight: 700;
+  color: #000000;
   opacity: 1;
 }

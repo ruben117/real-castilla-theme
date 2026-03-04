@@ -55,13 +55,13 @@ Helper classes with ability to override anything that comes before it
   --font-weight-bold: 700;
   --font-size-menu: 16px;
   --font-size-base: 14px;
-  --font-size-heading: 32px;
+  --font-size-heading: 24px;
   --font-size-subheading: 18px;
   --font-size-highlight: 16px;
 }
 .padding-section{
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
 }
 
   /*Fonts*/
@@ -78,6 +78,12 @@ h1 .text-highlight, h2 .text-highlight, h3 .text-highlight, h4 .text-highlight {
   font-weight: var(--font-weight-light) !important;
 
 }
+body{
+  color: var(--color-text) !important;
+}
+strong{
+  color:#000000 !important;
+}
 p, p span{
   font-size: var(--font-size-base);
   color: var(--color-text);
@@ -87,7 +93,7 @@ a, a:hover{text-decoration: none !important;}
 /*Theme*/
 
 /* Botón Dorado (Reutilizando tu estilo anterior) */
-.btn {
+.btn, button {
   padding: 12px 30px;
   font-weight: 600;
   display: inline-block;
@@ -95,7 +101,7 @@ a, a:hover{text-decoration: none !important;}
   transition: background 0.3s;
   font-size: var(--font-size-highlight);
 }
-.btn:hover {
+.btn:hover, button:hover {
   font-weight: 600 !important;
 }
 
@@ -289,118 +295,120 @@ a, a:hover{text-decoration: none !important;}
     margin-bottom: 20px;
   }
   
-  .hero-custom-typography strong, 
-  .text-highlight {
-    color: #dcb352; /* Color dorado extraído de la imagen */
-    font-weight: 500;
-  }
+.hero-custom-typography strong, 
+.text-highlight {
+  color: #dcb352; /* Color dorado extraído de la imagen */
+  font-weight: 500;
+}
 
-  .hero-subheadline {
-    color: #ffffff;
-    font-size: 16px;
-    margin-bottom: 25px;
-    display: block;
-  }
+.hero-subheadline {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 25px;
+  display: block;
+}
 
-  .hero-divider {
-    width: 60px;
-    height: 3px;
-    background-color: #dcb352;
-    margin-bottom: 25px;
-    display: block;
-  }
+.hero-divider {
+  width: 60px;
+  height: 3px;
+  background-color: #dcb352;
+  margin-bottom: 25px;
+  display: block;
+}
 
-  .body-title {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
+.body-title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
 
-  .body-text {
-    color: #f0f0f0;
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 30px;
-    max-width: 90%;
-  }
+.body-text {
+  color: #f0f0f0;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  max-width: 90%;
+}
 
-  .cta-button-gold {
-    background-color: #dcb352;
-    color: #222222;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-  
-  .cta-button-gold:hover {
-    background-color: #c49d40;
-    color: #000000;
-  }
-
-  /* Gradiente para oscurecer la imagen y que se lea el texto */
-  .hero-overlay {
-    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-  }
-
-  /*Espacios compartidos*/
-  /* Estilos para el contenedor de la sección */
-  .section-overlap-container {
-    overflow: visible; /* Importante para permitir que la imagen se "salga" si es necesario */
-  }
-
-  /* Estilos Título y Texto */
-  .overlap-content h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #222; /* Color oscuro base */
-    font-size: 36px;
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-  
-  .overlap-content p {
-    color: #666;
-    font-size: var(--font-size-base);
-    line-height: 1.6;
-    margin-bottom: 30px;
-  }
-
-  /* Lógica del Margen Negativo para la Imagen */
-  .overlap-image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra para darle profundidad */
-    border-radius: 4px;
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Solo en Desktop (pantallas mayores a 992px) aplicamos el margen negativo */
-  @media (min-width: 992px) {
-    .overlap-image-wrapper {
-      margin-left: -80px; /* Aquí está la magia del overlap negativo */
-      margin-top: 40px;   /* Un poco de desplazamiento vertical si se desea */
-    }
-  }
-
-  /* En Móvil reseteamos para que se vea normal */
-  @media (max-width: 991px) {
-    .overlap-image-wrapper {
-      margin-left: 0;
-      margin-top: 40px; /* Espacio entre el texto y la imagen en móvil */
-    }
-  }
-
-  /*Amenidades*/
-  /* Títulos de columna */
-.rc-amenities__coltitle{
-  font-size: 18px;
+.cta-button-gold {
+  background-color: #dcb352;
+  color: #222222;
+  padding: 12px 24px;
+  text-decoration: none;
   font-weight: 600;
-  margin: 16px 0 14px;
+  display: inline-block;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.cta-button-gold:hover {
+  background-color: #c49d40;
+  color: #000000;
+}
+
+/* Gradiente para oscurecer la imagen y que se lea el texto */
+.hero-overlay {
+  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+}
+
+
+/*** Espacios compartidos ***/
+/* Estilos para el contenedor de la sección */
+.section-overlap-container {
+  overflow: visible; /* Importante para permitir que la imagen se "salga" si es necesario */
+}
+
+/* Estilos Título y Texto */
+.overlap-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #222; /* Color oscuro base */
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.overlap-content p {
+  color: #666;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Lógica del Margen Negativo para la Imagen */
+.overlap-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra para darle profundidad */
+  border-radius: 4px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Solo en Desktop (pantallas mayores a 992px) aplicamos el margen negativo */
+@media (min-width: 992px) {
+  .overlap-image-wrapper {
+    margin-left: -80px; /* Aquí está la magia del overlap negativo */
+    margin-top: 40px;   /* Un poco de desplazamiento vertical si se desea */
+  }
+}
+
+/* En Móvil reseteamos para que se vea normal */
+@media (max-width: 991px) {
+  .overlap-image-wrapper {
+    margin-left: 0;
+    margin-top: 40px; /* Espacio entre el texto y la imagen en móvil */
+  }
+}
+
+/*** Amenidades ***/
+/* Títulos de columna */
+.rc-amenities__coltitle{
+  color: #171717;
+  font-size: 18px;
+  font-weight: 600 !important;
+  margin: 16px 0 40px;
 }
 
 /* Ajuste de imágenes (bloque con fondo dorado tipo la captura) */
@@ -417,7 +425,13 @@ a, a:hover{text-decoration: none !important;}
   }
 }
 
-/*video*/
+/*** Video binvenida ***/
+.heading-video h2{
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--color-primary);
+  font-size: var(--font-size-heading);
+}
 .rc-welcome-video{
   max-width: 920px;
   margin: 28px auto 0;
@@ -430,6 +444,14 @@ a, a:hover{text-decoration: none !important;}
   width: 100%;
   height: auto;
   display: block;
+}
+
+/*** Modelos Sliders ***/
+.heading-modelos-slider h2{
+  text-align: left;
+  margin-bottom: 15px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-heading,40px);
 }
 
 /*Contacto con formulario*/
@@ -482,9 +504,7 @@ a, a:hover{text-decoration: none !important;}
 
 /*Ubicación*/
 /* Ubicación: título grande centrado */
-.hs_cos_wrapper_type_header h2{
-  text-align: center;
-}
+
 
 /* Si no quieres afectar otros h2 globales, dime y lo encapsulo con clase wrapper */
 .rc-location__map iframe{
