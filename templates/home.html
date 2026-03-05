@@ -80,8 +80,11 @@
   {% end_dnd_section %}
 
   {# Comprador inteligente #}
-
   {% dnd_section
+    padding={
+      "default": { "top": 80, "right": 20, "bottom": 80, "left": 20 },
+      "mobile":  { "top": 60, "right": 20, "bottom": 60, "left": 20 }
+    },
     vertical_alignment="MIDDLE"
   %}
     {# Columna izquierda (texto + lista de amenities) #}
