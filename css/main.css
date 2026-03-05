@@ -111,6 +111,9 @@ a, a:hover{text-decoration: none !important;}
     margin: 0;
     color: var(--color-secondary);
 }
+.txt-white, .txt-white p, .txt-white span, .txt-white h1, .txt-white h2, .txt-white h3, .txt-white h4{
+  color: #fff !important;
+}
 /* Botón Dorado (Reutilizando tu estilo anterior) */
 .btn, button {
   padding: 12px 30px;
@@ -506,8 +509,8 @@ a, a:hover{text-decoration: none !important;}
 /*Contacto con formulario*/
 /* Separador izq */
 .rc-form-section__sep{
-  width: 60px;
-  height: 2px;
+  width: 90px;
+  height: 8px;
   background: #c7a600;
   margin-top: 18px;
 }
@@ -528,11 +531,21 @@ a, a:hover{text-decoration: none !important;}
 
 .rc-contact-form .hs-input{
   width: 100% !important;
-  border: 1px solid #e6e6e6;
+  border: none;
+  border-bottom: 1px solid #E5E5E5;
   padding: 12px 12px;
   height: auto;
+  color: #8B929F;
+  font-weight: var(--font-weight-light);
 }
-
+.rc-contact-form .hs-input:focus{
+  outline: none;
+  border-bottom-color: var(--color-primary);
+}
+.form-title, form label, form legend {
+    color: var(--color-secondary) !important;
+    margin:0px;
+}
 .rc-contact-form .hs-form-field{
   margin-bottom: 12px;
 }
@@ -541,14 +554,15 @@ a, a:hover{text-decoration: none !important;}
   width: 100%;
   background: #c7a600;
   border: 0;
-  color: #111;
+  color: #ffffff;
   padding: 12px 14px;
   font-weight: 700;
   cursor: pointer;
 }
 
 .rc-contact-form .hs-button:hover{
-  opacity: .92;
+  background: var(--color-secondary);
+  color: #fff;
 }
 
 /*Ubicación*/

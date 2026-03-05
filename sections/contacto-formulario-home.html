@@ -36,7 +36,8 @@
           {% dnd_module
             path="@hubspot/header",
             header_tag="h2",
-            value={{ context.left_title or "¿Listo para mudarte?" }}
+            value={{ context.left_title or "¿Listo para mudarte?" }},
+            extra_classes="txt-white" 
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
@@ -46,8 +47,9 @@
             path="@hubspot/rich_text",
             html={{
               context.left_text or
-              "<p style='max-width:420px; color: rgba(255,255,255,.75);'>No pierdas tiempo en llamadas. Completa tus datos y un asesor digital te contactará por el medio que prefieras.</p>"
-            }}
+              "<p style='max-width:420px;'>No pierdas tiempo en llamadas. Completa tus datos y un asesor digital te contactará por el medio que prefieras.</p>"
+            }},
+            extra_classes="txt-white"
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
