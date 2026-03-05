@@ -32,12 +32,20 @@
   {% include_dnd_partial path="../sections/video-bienvenida.html" %}
 
   {# Modelos slider #}
-  {% dnd_section padding={
-      top: 150,
-      right: 0,
-      bottom: 150,
-      left: 0
-    }%}
+  {% dnd_section
+    padding={
+      "default": {
+        "top": 150,
+        "bottom": 50
+      },
+      "mobile": {
+        "top": 80,
+        "right": 20,
+        "bottom": 80,
+        "left": 20
+      }
+    },
+  %}
     {% dnd_column %}
       {% dnd_row %}
         
@@ -74,7 +82,6 @@
   {# Comprador inteligente #}
 
   {% dnd_section
-    background_color="#ffffff",
     vertical_alignment="MIDDLE"
   %}
 
@@ -84,7 +91,8 @@
       {% dnd_row %}
         {% dnd_module
           path="@hubspot/rich_text",
-          html="<h2>Para el Comprador Inteligente</h2><p>Nuestra comunidad destaca por estar altamente informada. Por ello, ofrecemos transparencia total en tu inversión:</p>"
+          html="<h2>Para el Comprador Inteligente</h2><p class='pt-30'>Nuestra comunidad destaca por estar altamente informada. Por ello, ofrecemos transparencia total en tu inversión:</p>",
+          extra_classes="heading-big"
         %}
         {% end_dnd_module %}
       {% end_dnd_row %}
@@ -94,11 +102,11 @@
         {% dnd_module
           path="../modules/amenities-items",
           icon={
-            "src": get_asset_url("../images/icons/compra-inteligente-bono-escrituracion.png"),
-            "alt": "Gimnasio",
+            "src": get_asset_url("../images/icons/compra-inteligente-flexibilidad-financiera.png"),
+            "alt": "Flexibilidad Financiera",
             "loading": "lazy"
           },
-          content="<p><strong>Gimnasio:</strong> Equipado para mantener tu rutina sin salir de casa.</p>"
+          content="<p><strong>Flexibilidad Financiera:</strong> Aceptamos créditos Infonavit, Fovissste y bancarios.</p>"
         %}
         {% end_dnd_module %}
       {% end_dnd_row %}
@@ -107,11 +115,11 @@
         {% dnd_module
           path="../modules/amenities-items",
           icon={
-            "src": get_asset_url("../images/icons/compra-inteligente-flexibilidad-financiera.png"),
-            "alt": "Alberca",
+            "src": get_asset_url("../images/icons/compra-inteligente-bono-escrituracion.png"),
+            "alt": "Bono de Escrituración",
             "loading": "lazy"
           },
-          content="<p><strong>Alberca:</strong> Un espacio para relajarte y disfrutar con familia y amigos.</p>"
+          content="<p><strong>Bono de Escrituración:</strong> Un incentivo exclusivo para facilitar tu proceso de adquisición de vivienda.</p>"
         %}
         {% end_dnd_module %}
       {% end_dnd_row %}

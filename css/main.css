@@ -12,7 +12,10 @@ This is where reset, normalize & box-sizing styles go.
 
 {% include './generic/_reset.css' %}
 {% include './generic/_normalize.css' %}
-
+.content-wrapper--vertical-spacing, .dnd-section
+ {
+    padding: 80px 15px !important;
+}
 /* Objects
 Non-cosmetic design patterns including grid and layout classes)
 */
@@ -56,6 +59,7 @@ Helper classes with ability to override anything that comes before it
   --font-size-menu: 16px;
   --font-size-base: 14px;
   --font-size-heading: 24px;
+  --font-size-heading-big: 45px;
   --font-size-subheading: 18px;
   --font-size-highlight: 16px;
 }
@@ -91,7 +95,46 @@ p, p span{
 a, a:hover{text-decoration: none !important;}
 
 /*Theme*/
-
+.heading-big,
+.heading-big h1,.heading-big h2{
+    font-size: var(--font-size-heading-big);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--color-secondary);
+}
+.mb-0{margin-bottom: 0 !important;}
+.mt-0{margin-top: 0 !important;}
+.mb-20{margin-bottom: 20px !important;}
+.mt-20{margin-top: 20px !important;}
+.mb-30{margin-bottom: 30px !important;}
+.mt-30{margin-top: 30px !important;}
+.mb-40{margin-bottom: 40px !important;}
+.mt-40{margin-top: 40px !important;}
+.mb-50{margin-bottom: 50px !important;}
+.mt-50{margin-top: 50px !important;}  
+.mb-60{margin-bottom: 60px !important;}
+.mt-60{margin-top: 60px !important;}
+.mb-80{margin-bottom: 80px !important;}
+.mt-80{margin-top: 80px !important;}
+.mb-100{margin-bottom: 100px !important;}
+.mt-100{margin-top: 100px !important;}
+.pb-0{padding-bottom: 0 !important;}
+.pt-0{padding-top: 0 !important;}
+.pb-20{padding-bottom: 20px !important;}
+.pt-20{padding-top: 20px !important;} 
+.pb-30{padding-bottom: 30px !important;}
+.pt-30{padding-top: 30px !important;}
+.pb-40{padding-bottom: 40px !important;}
+.pt-40{padding-top: 40px !important;}
+.pb-50{padding-bottom: 50px !important;}
+.pt-50{padding-top: 50px !important;}
+.pb-60{padding-bottom: 60px !important;}
+.pt-60{padding-top: 60px !important;}
+.pb-80{padding-bottom: 80px !important;}
+.pt-80{padding-top: 80px !important;}
+.pb-100{padding-bottom: 100px !important;}
+.pt-100{padding-top: 100px !important;}
 /* Botón Dorado (Reutilizando tu estilo anterior) */
 .btn, button {
   padding: 12px 30px;
@@ -363,7 +406,7 @@ a, a:hover{text-decoration: none !important;}
 .overlap-content h2 {
   font-family: 'Montserrat', sans-serif;
   color: #222; /* Color oscuro base */
-  font-size: 36px;
+  font-size: var(--font-size-heading-big);
   margin-bottom: 20px;
   font-weight: 300;
 }
@@ -451,8 +494,10 @@ a, a:hover{text-decoration: none !important;}
   text-align: left;
   margin-bottom: 15px;
   color: var(--color-secondary);
-  font-size: var(--font-size-heading,40px);
+  font-size: var(--font-size-heading-big);
 }
+
+/***Comprador inteligente***/
 
 /*Contacto con formulario*/
 /* Separador izq */

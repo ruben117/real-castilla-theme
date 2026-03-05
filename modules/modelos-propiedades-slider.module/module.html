@@ -23,10 +23,10 @@
         {# Fallback de imágenes del theme (1,2,3) #}
         {% set fallback_img =
           loop.index0 == 0
-            ? get_asset_url("../images/modelo-torralba-1.png")
+            ? get_asset_url("../../images/modelo-torralba-1.png")
             : (loop.index0 == 1
-                ? get_asset_url("../images/modelo-torralba-2.png")
-                : get_asset_url("../images/modelo-torralba-3.png"))
+                ? get_asset_url("../../images/modelo-torralba-2.png")
+                : get_asset_url("../../images/modelo-torralba-3.png"))
         %}
         {% set img_src = (it.image and it.image.src) ? it.image.src : fallback_img %}
 
