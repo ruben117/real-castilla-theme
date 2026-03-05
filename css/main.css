@@ -103,38 +103,14 @@ a, a:hover{text-decoration: none !important;}
     margin: 0;
     color: var(--color-secondary);
 }
-.mb-0{margin-bottom: 0 !important;}
-.mt-0{margin-top: 0 !important;}
-.mb-20{margin-bottom: 20px !important;}
-.mt-20{margin-top: 20px !important;}
-.mb-30{margin-bottom: 30px !important;}
-.mt-30{margin-top: 30px !important;}
-.mb-40{margin-bottom: 40px !important;}
-.mt-40{margin-top: 40px !important;}
-.mb-50{margin-bottom: 50px !important;}
-.mt-50{margin-top: 50px !important;}  
-.mb-60{margin-bottom: 60px !important;}
-.mt-60{margin-top: 60px !important;}
-.mb-80{margin-bottom: 80px !important;}
-.mt-80{margin-top: 80px !important;}
-.mb-100{margin-bottom: 100px !important;}
-.mt-100{margin-top: 100px !important;}
-.pb-0{padding-bottom: 0 !important;}
-.pt-0{padding-top: 0 !important;}
-.pb-20{padding-bottom: 20px !important;}
-.pt-20{padding-top: 20px !important;} 
-.pb-30{padding-bottom: 30px !important;}
-.pt-30{padding-top: 30px !important;}
-.pb-40{padding-bottom: 40px !important;}
-.pt-40{padding-top: 40px !important;}
-.pb-50{padding-bottom: 50px !important;}
-.pt-50{padding-top: 50px !important;}
-.pb-60{padding-bottom: 60px !important;}
-.pt-60{padding-top: 60px !important;}
-.pb-80{padding-bottom: 80px !important;}
-.pt-80{padding-top: 80px !important;}
-.pb-100{padding-bottom: 100px !important;}
-.pt-100{padding-top: 100px !important;}
+.heading,
+.heading h1,.heading h2{
+    font-size: var(--font-size-heading);
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0;
+    color: var(--color-secondary);
+}
 /* Botón Dorado (Reutilizando tu estilo anterior) */
 .btn, button {
   padding: 12px 30px;
@@ -498,6 +474,34 @@ a, a:hover{text-decoration: none !important;}
 }
 
 /***Comprador inteligente***/
+
+/*** Blog post home  ***/
+.blog-post-home .dnd-column{
+  padding: 0!important;
+}
+.heading-blog-post-home h2{
+  margin-bottom: 15px;
+  color: var(--color-secondary);
+  font-size: 30px;
+  font-weight: 600 !important;
+}
+.contentino-blog-post-home h3{
+  margin: 8px 0;
+  color: var(--color-secondary);
+  font-size: var(--font-size-heading);
+  font-weight: 600 !important;
+}
+.contentino-blog-post-home p{
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  margin:20px 0;
+}
+
+.contentino-blog-post-home p:first-child{
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-top: 10px;
+}
 
 /*Contacto con formulario*/
 /* Separador izq */

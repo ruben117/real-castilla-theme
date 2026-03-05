@@ -6,8 +6,9 @@
   description: "Seccion con tres columnas, cada una con una imagen y texto debajo. El fondo es blanco por default pero se puede cambiar desde el editor de contenido."
 -->
 {% dnd_section
-  background_color={{ context.background_color or "#f8fafc" }},
-  vertical_alignment="MIDDLE"
+  background_color={{ context.background_color or "#ffffff" }},
+  vertical_alignment="MIDDLE",
+  class="blog-post-home"
 %}
 
   {# Heading a ancho completo #}
@@ -15,7 +16,8 @@
     {% dnd_row %}
       {% dnd_module
         path="@hubspot/rich_text",
-        html={{ context.heading or "<h2>Artículos</h2>" }}
+        html={{ context.heading or "<h2>Artículos</h2>" }},
+        extra_classes="heading heading-blog-post-home"
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}
@@ -41,7 +43,8 @@
         {% dnd_row %}
           {% dnd_module
             path="@hubspot/rich_text",
-            html={{ context.column_one_content or "<p>dic 2, 2025</p><h3>Aguinaldo en México: qué es, cuánto te toca y cómo aprovecharlo</h3><p>Diciembre es un mes de celebraciones, pero también de decisiones importantes para el bolsillo.</p>" }}
+            html={{ context.column_one_content or "<p>dic 2, 2025</p><h3>Aguinaldo en México: qué es, cuánto te toca y cómo aprovecharlo</h3><p>Diciembre es un mes de celebraciones, pero también de decisiones importantes para el bolsillo.</p>" }},
+            extra_classes="contentino-blog-post-home"
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
@@ -67,7 +70,8 @@
         {% dnd_row %}
           {% dnd_module
             path="@hubspot/rich_text",
-            html={{ context.column_two_content or "<p>nov 28, 2025</p><h3>Qué hacer al heredar una casa en México? Conoce trámites e impuestos</h3><p>Recibir una casa como herencia puede parecer un proceso sencillo, pero en realidad implica una serie de trámites legales.</p>" }}
+            html={{ context.column_two_content or "<p>nov 28, 2025</p><h3>Qué hacer al heredar una casa en México? Conoce trámites e impuestos</h3><p>Recibir una casa como herencia puede parecer un proceso sencillo, pero en realidad implica una serie de trámites legales.</p>" }},
+            extra_classes="contentino-blog-post-home"
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
@@ -93,7 +97,8 @@
         {% dnd_row %}
           {% dnd_module
             path="@hubspot/rich_text",
-            html={{ context.column_three_content or "<p>nov 28, 2025</p><h3>Predial en México: cómo funciona, para qué sirve y cómo consultarlo</h3><p>Dice una vieja frase que, en la vida, hay pocas cosas verdaderamente inevitables.</p>" }}
+            html={{ context.column_three_content or "<p>nov 28, 2025</p><h3>Predial en México: cómo funciona, para qué sirve y cómo consultarlo</h3><p>Dice una vieja frase que, en la vida, hay pocas cosas verdaderamente inevitables.</p>" }},
+            extra_classes="contentino-blog-post-home"
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}
