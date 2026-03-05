@@ -1,0 +1,35 @@
+{% set uid = name|replace(" ", "_")|replace("-", "_") %}
+{% set items = module.items or [] %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .rc-icon-text-list--{{ uid }}{
+    --rc-icon-size: {{ module.styles.layout.icon_size|default(24) }}px;
+    --rc-gap: {{ module.styles.layout.gap|default(14) }}px;
+    --rc-item-gap: {{ module.styles.layout.item_gap|default(26) }}px;
+    --rc-icon-align: {{ module.styles.layout.icon_align|default("flex-start") }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="rc-icon-text-list rc-icon-text-list--{{ uid }}">
+  {% for it in items %}
+    <div class="rc-icon-text-list__item">
+      <div class="rc-icon-text-list__icon">
+        {% if it.icon and it.icon.src %}
+          <img
+            src="{{ it.icon.src|escape_url }}"
+            alt="{{ it.icon.alt|default('Icono')|escape_attr }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      <div class="rc-icon-text-list__text">
+        {{ it.text }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

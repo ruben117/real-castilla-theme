@@ -19,7 +19,8 @@
       {% dnd_module
         path="@hubspot/header",
         header_tag="h2",
-        value={{ context.location_title or "¿Dónde está ubicado Real Castilla?" }}
+        value={{ context.location_title or "¿Dónde está ubicado Real Castilla?" }},
+        extra_classes="heading-big heading-ubicacion"
       %}
       {% end_dnd_module %}
     {% end_dnd_row %}
@@ -45,36 +46,41 @@
       {% dnd_column offset=7, width=5 %}
         {% dnd_row %}
           {% dnd_module
-            path="@hubspot/rich_text",
-            html={{
-              context.contact_block or
-              "<div class='rc-location__contact'>
-                 <div class='rc-location__label'>DATOS DE CONTACTO</div>
-
-                 <div class='rc-location__item'>
-                   <span class='rc-location__icon'>✉️</span>
-                   <span class='rc-location__text'>cinthia.martinez@vinte.com</span>
-                 </div>
-
-                 <div class='rc-location__item'>
-                   <span class='rc-location__icon'>🟢</span>
-                   <span class='rc-location__text'>591 917 7470</span>
-                 </div>
-
-                 <div class='rc-location__item'>
-                   <span class='rc-location__icon'>📞</span>
-                   <span class='rc-location__text'>591 917 7470</span>
-                 </div>
-
-                 <div class='rc-location__item'>
-                   <span class='rc-location__icon'>📍</span>
-                   <span class='rc-location__text'>
-                     Carretera Jorobas - Tula Km 12 Mz. 12 Lt 14<br>
-                     El Pedregal, a 15 min de la caseta de Tepotzotlán
-                   </span>
-                 </div>
-               </div>"
-            }}
+            path="../modules/icon-text-list",
+            items=[
+              {
+                "icon": {
+                  "src": context.icon_email or get_asset_url("../images/icons/ubicacion-email.png"),
+                  "alt": "Email",
+                  "loading": "lazy"
+                },
+                "text": "<p>cinthia.martinez@vinte.com</p>"
+              },
+              {
+                "icon": {
+                  "src": context.icon_whatsapp or get_asset_url(\"../images/icons/ubicacion-whatsapp.png\"),
+                  "alt": "WhatsApp",
+                  "loading": "lazy"
+                },
+                "text": "<p>591 917 7470</p>"
+              },
+              {
+                "icon": {
+                  "src": context.icon_phone or get_asset_url(\"../images/icons/ubicacion-telefono.png\"),
+                  "alt": "Teléfono",
+                  "loading": "lazy"
+                },
+                "text": "<p>591 917 7470</p>"
+              },
+              {
+                "icon": {
+                  "src": context.icon_location or get_asset_url(\"../images/icons/ubicacion-pin.png\"),
+                  "alt": "Ubicación",
+                  "loading": "lazy"
+                },
+                "text": "<p>Carretera Jorobas – Tula Km 12 Mz. 12 Lt 14<br>El Pedregal, a 15 min de la caseta de Tepotzotlán</p>"
+              }
+            ]
           %}
           {% end_dnd_module %}
         {% end_dnd_row %}

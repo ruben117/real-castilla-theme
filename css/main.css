@@ -383,7 +383,6 @@ a, a:hover{text-decoration: none !important;}
 
 /* Estilos Título y Texto */
 .overlap-content h2 {
-  font-family: 'Montserrat', sans-serif;
   color: #222; /* Color oscuro base */
   font-size: var(--font-size-heading-big);
   margin-bottom: 20px;
@@ -567,7 +566,13 @@ a, a:hover{text-decoration: none !important;}
 
 /*Ubicación*/
 /* Ubicación: título grande centrado */
+.heading-ubicacion h2{
+  text-align: center;
+  margin-bottom: 35px;
+  color: var(--color-secondary);
+  font-size: var(--font-size-heading-big);
 
+}
 
 /* Si no quieres afectar otros h2 globales, dime y lo encapsulo con clase wrapper */
 .rc-location__map iframe{

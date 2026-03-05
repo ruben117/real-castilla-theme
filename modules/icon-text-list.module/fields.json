@@ -1,0 +1,79 @@
+[
+  {
+    "name": "items",
+    "label": "Items",
+    "type": "group",
+    "required": true,
+    "occurrence": { "min": 1, "max": 20 },
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icono (PNG)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true
+      },
+      {
+        "name": "text",
+        "label": "Texto",
+        "type": "richtext",
+        "required": true,
+        "default": "<p>Tu texto aquí</p>"
+      }
+    ]
+  },
+  {
+    "name": "styles",
+    "label": "Estilos",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "name": "icon_align",
+            "label": "Alineación vertical del icono",
+            "type": "choice",
+            "display": "select",
+            "choices": [
+              ["flex-start", "Top"],
+              ["center", "Center"],
+              ["flex-end", "Bottom"]
+            ],
+            "default": "flex-start"
+          },
+          {
+            "name": "icon_size",
+            "label": "Tamaño del icono (px)",
+            "type": "number",
+            "min": 16,
+            "max": 80,
+            "step": 1,
+            "default": 24
+          },
+          {
+            "name": "gap",
+            "label": "Separación icono/texto (px)",
+            "type": "number",
+            "min": 0,
+            "max": 40,
+            "step": 1,
+            "default": 14
+          },
+          {
+            "name": "item_gap",
+            "label": "Separación entre items (px)",
+            "type": "number",
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "default": 26
+          }
+        ]
+      }
+    ]
+  }
+]
