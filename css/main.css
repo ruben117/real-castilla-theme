@@ -12,10 +12,7 @@ This is where reset, normalize & box-sizing styles go.
 
 {% include './generic/_reset.css' %}
 {% include './generic/_normalize.css' %}
-.content-wrapper--vertical-spacing, .dnd-section
- {
-    padding: 80px 15px !important;
-}
+
 /* Objects
 Non-cosmetic design patterns including grid and layout classes)
 */
@@ -305,7 +302,146 @@ a, a:hover{text-decoration: none !important;}
 [id]{
   scroll-margin-top: var(--rc-header-offset);
 }
+/* ===== Mobile menu (hamburger) ===== */
 
+/* Botón hamburguesa */
+.header--rc .header__burger{
+  display: none; /* se activa en mobile */
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.header--rc .header__burger-lines{
+  position: relative;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  display: block;
+}
+
+.header--rc .header__burger-lines::before,
+.header--rc .header__burger-lines::after{
+  content:"";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+}
+
+.header--rc .header__burger-lines::before{ top: -7px; }
+.header--rc .header__burger-lines::after{ top: 7px; }
+
+/* Drawer wrapper */
+.header--rc .header__mobile{
+  display: none;
+}
+
+.header--rc .header__mobile.is-open{
+  display: block;
+}
+
+.header--rc .header__mobile-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 1200;
+}
+
+.header--rc .header__mobile-panel{
+  position: fixed;
+  top: -34px;
+  right: 0;
+  height: 100vh;
+  width: min(86vw, 360px);
+  background: rgba(26,26,26,.98);
+  z-index: 1201;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: -8px 0 24px rgba(0,0,0,.35);
+}
+
+.header--rc .header__mobile-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header--rc .header__mobile-title{
+  color: #fff;
+  font-weight: 700;
+}
+
+.header--rc .header__mobile-close{
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Menú mobile en columna */
+.header--rc .header__nav--mobile ul{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.header--rc .header__nav--mobile a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 6px;
+  display: block;
+}
+
+.header--rc .header__cta--mobile{
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ===== Responsive breakpoints ===== */
+@media (max-width: 991px){
+  /* Logo izq, burger der */
+  .header--rc .header__container{
+    height: 72px; /* un poco más compacto en mobile */
+    flex-direction: row;
+    padding:0px;
+  }
+
+  .header--rc .header__burger{
+    display: inline-flex;
+  }
+  .header--rc img{
+    max-width: 90px;
+    height: auto;
+    margin-left: 20px;
+  }
+
+  /* Ocultar nav + CTA desktop */
+  .header--rc .header__nav--desktop,
+  .header--rc .header__cta--desktop{
+    display: none;
+  }
+
+  /* Ajuste del logo */
+  .header--rc .header__logo{
+    max-width: 140px;
+  }
+}
 
 /*Hero Banner*/
 .hero-custom-typography h1 {

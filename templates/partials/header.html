@@ -189,17 +189,53 @@
 
       {# Navegación + CTA #}
       <div class="header__right">
-        <nav class="header__nav" aria-label="Primary">
+
+        {# Botón hamburguesa (solo mobile) #}
+        <button class="header__burger"
+                type="button"
+                aria-label="Abrir menú"
+                aria-controls="rc-mobile-menu"
+                aria-expanded="false"
+                data-rc-menu-toggle>
+          <span class="header__burger-lines" aria-hidden="true"></span>
+        </button>
+
+        {# Navegación desktop #}
+        <nav class="header__nav header__nav--desktop" aria-label="Primary">
           {% module "navigation-primary"
             path="@hubspot/menu",
             label="Primary navigation"
           %}
         </nav>
 
-        {# Botón CTA (simple link; si quieres, lo volvemos module) #}
-        <a class="header__cta" href="#agenda-demo">
+        {# CTA desktop #}
+        <a class="header__cta header__cta--desktop" href="#agenda-demo">
           Agenda una demo
         </a>
+
+      </div>
+
+      {# Menú mobile (drawer) #}
+      <div class="header__mobile" id="rc-mobile-menu" data-rc-mobile-menu aria-hidden="true">
+        <div class="header__mobile-backdrop" data-rc-menu-close></div>
+
+        <div class="header__mobile-panel" role="dialog" aria-modal="true" aria-label="Menú">
+          <div class="header__mobile-header">
+            <span class="header__mobile-title">Menú</span>
+            <button class="header__mobile-close" type="button" aria-label="Cerrar menú" data-rc-menu-close>✕</button>
+          </div>
+
+          <nav class="header__nav header__nav--mobile" aria-label="Primary mobile">
+            {% module "navigation-primary-mobile"
+              path="@hubspot/menu",
+              label="Primary navigation mobile"
+            %}
+          </nav>
+
+          <a class="header__cta header__cta--mobile" href="#agenda-demo">
+            Agenda una demo
+          </a>
+        </div>
       </div>
 
     </div>
