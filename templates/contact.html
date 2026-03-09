@@ -11,10 +11,119 @@
   label="Main section",
   class="body-container body-container--contact"
 %}
+  {% dnd_section
+    background_image={
+      "backgroundPosition": "MIDDLE_CENTER",
+      "backgroundSize": "cover",
+      "imageUrl": context.contact_bg or get_asset_url("../images/bgk-contacto.png")
+    },
+    padding={
+      "default": { "top": 180, "right": 20, "bottom": 0, "left": 20 },
+      "mobile":  { "top": 120, "right": 20, "bottom": 60, "left": 20 }
+    },
+    vertical_alignment="MIDDLE"
+  %}
 
-  {# Cards #}
+    {% dnd_column offset=0, width=12 %}
 
-  {% include_dnd_partial path="../sections/cards.html" %}
+      {% dnd_row %}
+
+        {# LEFT #}
+        {% dnd_column offset=0, width=6 %}
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/header",
+              header_tag="h1",
+              value={{ context.contact_title or "¡Estamos listos para atenderte!" }},
+              extra_classes="txt-white"
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              html={{
+                context.contact_text
+                or
+                "<p class='txt-white'>Déjanos tus datos y te contactaremos a la brevedad.</p>"
+              }}
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+
+        {# RIGHT (Form) #}
+        {% dnd_column offset=6, width=6 %}
+          {% dnd_row %}
+            {# Wrapper con clase para estilos #}
+            {% dnd_module
+              path="@hubspot/rich_text",
+              html={{ "<div class='rc-contact-hero__form-wrap'></div>" }}
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+
+          {% dnd_row %}
+            {% dnd_module path="@hubspot/form", 
+              extra_classes='rc-contact-form' %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+
+      {% end_dnd_row %}
+
+    {% end_dnd_column %}
+
+  {% end_dnd_section %}
+
+  {# Modelos slider #}
+  {% dnd_section
+    padding={
+      "default": {
+        "top": 150,
+        "bottom": 50
+      },
+      "mobile": {
+        "top": 80,
+        "right": 20,
+        "bottom": 80,
+        "left": 20
+      }
+    },
+  %}
+    {% dnd_column %}
+      {% dnd_row %}
+        
+        {% dnd_module
+          path="@hubspot/header",
+          header_tag="h2",
+          value={{ context.heading_title or "Elige el escenario de tu nueva vida desde $1,179,000" }},
+          width=5,
+          extra_classes="heading-modelos-slider"
+        %}
+
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+
+          {% dnd_module
+            path="@hubspot/rich_text",
+            html="<p>Nuestras <strong>casas residenciales modernas están diseñadas</strong> para adaptarse a tu estilo y proyecto de vida. Todas nuestras opciones cuentan con acabados de alta calidad y espacios optimizados para tu comodidad.</p>",
+            width=7,
+            class="home-models-text"
+          %}
+
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+
+          {% dnd_module path="../modules/modelos-propiedades-slider" %}
+          {% end_dnd_module %}
+      
+        {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
 {% end_dnd_area %}
 {% endblock body %}

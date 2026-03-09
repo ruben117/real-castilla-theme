@@ -609,6 +609,7 @@ a, a:hover{text-decoration: none !important;}
   margin-bottom: 15px;
   color: var(--color-secondary);
   font-size: var(--font-size-heading-big);
+  line-height: 1.9rem;
 }
 
 /***Comprador inteligente***/
@@ -652,11 +653,15 @@ a, a:hover{text-decoration: none !important;}
 
 /* Wrapper para estilos del form */
 .rc-contact-form{
-  background: #fff;
+  background: #FAFAFA;
   padding: 26px;
   border-radius: 2px;
   max-width: 480px;
   margin-left: auto;
+}
+.form-title,.submitted-message,form {
+    background-color: #FAFAFA;
+    border: 1px #FAFAFA;
 }
 
 /* Estilos dentro del form de HubSpot */
@@ -850,5 +855,38 @@ a, a:hover{text-decoration: none !important;}
   }
   .footer .row-fluid .span6{
     padding-top: 10px;
+  }
+}
+
+{###########################################################################}
+{##############################   Contacto  ################################}
+{###########################################################################}
+
+/* Contact hero */
+@media screen and (min-width: 768px) {
+  .body-container--contact .dnd-section:first-child{
+    position: relative;
+    height: 500px;
+    margin-bottom: -60px;
+  }
+}
+
+
+/* Estilar el form dentro de la columna derecha */
+.body-container--contact .hs_cos_wrapper_type_form{
+}
+
+
+/* Responsive: apilar */
+@media (max-width: 991px){
+  .body-container--contact .dnd-section{
+    min-height: auto;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .body-container--contact .hs_cos_wrapper_type_form{
+    margin-left: 0;
+    max-width: 100%;
   }
 }
