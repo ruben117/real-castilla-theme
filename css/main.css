@@ -864,29 +864,33 @@ a, a:hover{text-decoration: none !important;}
 
 /* Contact hero */
 @media screen and (min-width: 768px) {
-  .body-container--contact .dnd-section:first-child{
+  .hero-container-style-1 .dnd-section:first-child{
     position: relative;
     height: 500px;
     margin-bottom: -60px;
   }
-}
-
-
-/* Estilar el form dentro de la columna derecha */
-.body-container--contact .hs_cos_wrapper_type_form{
+  .modelos-casas-container .dnd-section:first-child{
+    height: 700px;
+  }
 }
 
 
 /* Responsive: apilar */
 @media (max-width: 991px){
-  .body-container--contact .dnd-section{
+  .hero-container-style-1 .dnd-section{
     min-height: auto;
     padding-top: 70px;
     padding-bottom: 70px;
   }
+}
 
-  .body-container--contact .hs_cos_wrapper_type_form{
-    margin-left: 0;
-    max-width: 100%;
-  }
+{###########################################################################}
+{#########################   Modelos de casas   ############################}
+{###########################################################################}
+
+.modelos-casas-container .dnd-section:first-child .widget-span{ 
+  padding: 0 0rem;
+}
+.modelos-casas-container .headeing-modelos-casas h3{
+  margin-bottom: 15px;
 }

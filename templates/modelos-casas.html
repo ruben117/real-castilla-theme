@@ -1,0 +1,169 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Modelos de casas
+  screenshotPath: ../images/template-previews/modelos-casas.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+  label="Main section",
+  class="body-container hero-container-style-1 modelos-casas-container"
+%}
+  {% dnd_section
+    background_image={
+      "backgroundPosition": "TOP_CENTER",
+      "backgroundSize": "cover",
+      "imageUrl": context.contact_bg or get_asset_url("../images/bgk-modelos-casas.png")
+    },
+    padding={
+      "default": { "top": 180, "right": 20, "bottom": 0, "left": 20 },
+      "mobile":  { "top": 120, "right": 20, "bottom": 60, "left": 20 }
+    },
+    vertical_alignment="MIDDLE", extra_classes="modelos-casas-hero"
+  %}
+
+    {% dnd_column offset=0, width=12 %}
+
+      {% dnd_row
+        padding={
+          "default": { "right": 24, "left": 24 },
+          "mobile":  { "right": 20, "left": 20 }
+        }
+      %}
+
+        {# LEFT #}
+        {% dnd_column offset=0, width=9 %}
+          {% dnd_row %}
+            {% dnd_column offset=0, width=12 %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/header",
+                  header_tag="h1",
+                  value={{ context.contact_title or "Modelo Torralba" }},
+                  extra_classes="txt-white heading-big p-b-30"
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+          {% end_dnd_row %}
+
+          {% dnd_row %}
+            {% dnd_column offset=0, width=6 %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/header",
+                  header_tag="h3",
+                  value={{ context.contact_title or "TORRALBA" }},
+                  extra_classes=" heading headeing-modelos-casas"
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+              
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/rich_text",
+                  html={{
+                    context.contact_text
+                    or
+                    "<p class='txt-white'>Para quienes exigen el nivel más alto de confort, espacio y acabados de lujo dentro de Real Castilla.</p>"
+                  }}
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+
+            
+            {% dnd_column offset=6, width=6 %}
+              {% dnd_row %}
+                {% dnd_module
+                  path="@hubspot/linked_image",
+                  img={
+                    "src": get_asset_url("../images/torralba-hero-1.png"),
+                    "alt": "Dog park image",
+                    "loading": "lazy",
+                    "size_type": "auto"
+                  }
+                %}
+                {% end_dnd_module %}
+              {% end_dnd_row %}
+            {% end_dnd_column %}
+
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+        
+
+        {# RIGHT (Form) #}
+        {% dnd_column offset=9, width=3 %}
+
+          {% dnd_row %}
+            {% dnd_module
+              path="@hubspot/linked_image",
+              img={
+                "src": get_asset_url("../images/torralba-hero-2.png"),
+                "alt": "Dog park image",
+                "loading": "lazy",
+                "size_type": "auto"
+              }
+            %}
+            {% end_dnd_module %}
+          {% end_dnd_row %}
+        {% end_dnd_column %}
+
+      {% end_dnd_row %}
+
+    {% end_dnd_column %}
+
+  {% end_dnd_section %}
+
+  {# Modelos slider #}
+  {% dnd_section
+    padding={
+      "default": {
+        "top": 150,
+        "bottom": 50
+      },
+      "mobile": {
+        "top": 80,
+        "right": 20,
+        "bottom": 80,
+        "left": 20
+      }
+    },
+  %}
+    {% dnd_column %}
+      {% dnd_row %}
+        
+        {% dnd_module
+          path="@hubspot/header",
+          header_tag="h2",
+          value={{ context.heading_title or "Elige el escenario de tu nueva vida desde $1,179,000" }},
+          width=5,
+          extra_classes="heading-modelos-slider"
+        %}
+
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+
+          {% dnd_module
+            path="@hubspot/rich_text",
+            html="<p>Nuestras <strong>casas residenciales modernas están diseñadas</strong> para adaptarse a tu estilo y proyecto de vida. Todas nuestras opciones cuentan con acabados de alta calidad y espacios optimizados para tu comodidad.</p>",
+            width=7,
+            class="home-models-text"
+          %}
+
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+      {% dnd_row %}
+
+          {% dnd_module path="../modules/modelos-propiedades-slider" %}
+          {% end_dnd_module %}
+      
+        {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}
