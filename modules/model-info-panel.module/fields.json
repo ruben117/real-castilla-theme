@@ -1,0 +1,196 @@
+[
+  {
+    "name": "header",
+    "label": "Encabezado",
+    "type": "group",
+    "children": [
+      {
+        "name": "title",
+        "label": "Título",
+        "type": "text",
+        "required": true,
+        "default": "Modelo Torralba 4"
+      },
+      {
+        "name": "subtitle",
+        "label": "Subtítulo",
+        "type": "text",
+        "default": "DETALLES t"
+      }
+    ]
+  },
+  {
+    "name": "amenities_heading",
+    "label": "Amenidades: título",
+    "type": "text",
+    "default": "DETALLES 2"
+  },
+  {
+    "name": "amenities",
+    "label": "Amenidades",
+    "type": "group",
+    "required": true,
+    "occurrence": { "min": 1, "max": 12 },
+    "default": [
+      {
+        "icon": { "src": "", "alt": "Recámaras" },
+        "title": "Recámaras",
+        "value": "3"
+      },
+      {
+        "icon": { "src": "", "alt": "Baños" },
+        "title": "Baños",
+        "value": "3"
+      },
+      {
+        "icon": { "src": "", "alt": "Estacionamientos" },
+        "title": "Estacionamientos",
+        "value": "1"
+      },
+      {
+        "icon": { "src": "", "alt": "Tipo" },
+        "title": "Tipo",
+        "value": "Casa"
+      },
+      {
+        "icon": { "src": "", "alt": "Terreno (m2)" },
+        "title": "Terreno (m2)",
+        "value": "90 m²"
+      }
+    ],
+    "children": [
+      {
+        "name": "icon",
+        "label": "Icono (PNG)",
+        "type": "image",
+        "responsive": true,
+        "resizable": true
+      },
+      {
+        "name": "title",
+        "label": "Nombre",
+        "type": "text",
+        "required": true,
+        "default": "Recámaras"
+      },
+      {
+        "name": "value",
+        "label": "Cantidad / Valor",
+        "type": "text",
+        "required": true,
+        "default": "3"
+      }
+    ]
+  },
+  {
+    "name": "overview",
+    "label": "Overview (izquierda)",
+    "type": "group",
+    "children": [
+      {
+        "name": "subtitle",
+        "label": "Subtítulo",
+        "type": "text",
+        "default": "OVERVIEW"
+      },
+      {
+        "name": "content",
+        "label": "Contenido",
+        "type": "richtext",
+        "default": "<p><strong>Torralba*</strong>&nbsp;&nbsp;<strong>$2,103,200</strong></p><p>*El costo corresponde al precio de contado en el modelo Torralba, puede variar dependiendo el prototipo, financiamiento y gastos.</p><p><strong>Desde $18,845 x mes</strong></p><p>*Torralba: La mensualidad corresponde al modelo Torralba) mediante financiamiento Infonavit.</p><p>*La vivienda no incluye mobiliario ni decoraciones.</p>"
+      },
+      {
+        "name": "button_text",
+        "label": "Botón: texto",
+        "type": "text",
+        "default": "Ver Detalle"
+      },
+      {
+        "name": "button_link",
+        "label": "Botón: enlace",
+        "type": "link",
+        "default": {
+          "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
+          "open_in_new_tab": false,
+          "no_follow": false,
+          "sponsored": false,
+          "user_generated_content": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "details",
+    "label": "Detalles (derecha)",
+    "type": "group",
+    "children": [
+      {
+        "name": "subtitle",
+        "label": "Subtítulo",
+        "type": "text",
+        "default": "DETALLES"
+      },
+      {
+        "name": "items",
+        "label": "Items",
+        "type": "group",
+        "required": true,
+        "occurrence": { "min": 1, "max": 20 },
+        "default": [
+          { "item_label": "Terreno (m²):", "value": "90 m²" },
+          { "item_label": "Construcción (m²):", "value": "134.37 m²" },
+          { "item_label": "Alojamiento:", "value": "3" },
+          { "item_label": "Recámaras:", "value": "3" },
+          { "item_label": "Baños:", "value": "3" },
+          { "item_label": "Estacionamientos:", "value": "1" }
+        ],
+        "children": [
+          {
+            "name": "item_label",
+            "label": "Etiqueta",
+            "type": "text",
+            "required": true,
+            "default": "Terreno (m²):"
+          },
+          {
+            "name": "value",
+            "label": "Valor",
+            "type": "text",
+            "required": true,
+            "default": "90 m²"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "styles",
+    "label": "Estilos",
+    "type": "group",
+    "tab": "STYLE",
+    "children": [
+      {
+        "name": "layout",
+        "label": "Layout",
+        "type": "group",
+        "children": [
+          {
+            "name": "amenities_columns",
+            "label": "Columnas amenidades (desktop)",
+            "type": "number",
+            "min": 3,
+            "max": 6,
+            "step": 1,
+            "default": 5
+          },
+          {
+            "name": "accent_color",
+            "label": "Color acento",
+            "type": "color",
+            "default": { "color": "#C5A028", "opacity": 100 }
+          }
+        ]
+      }
+    ]
+  }
+]

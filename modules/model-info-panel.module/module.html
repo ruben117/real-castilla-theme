@@ -1,0 +1,110 @@
+{% set uid = name|replace(" ", "_")|replace("-", "_") %}
+{% set accent = module.styles.layout.accent_color.color|default("#C5A028") %}
+{% set cols = module.styles.layout.amenities_columns|default(5) %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .rc-model-panel--{{ uid }}{
+    --rc-accent: {{ accent }};
+    --rc-amen-cols: {{ cols }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<section class="rc-model-panel rc-model-panel--{{ uid }}">
+
+  {# ===== Row 1: Title + Subtitle ===== #}
+  <header class="rc-model-panel__header">
+    <h2 class="rc-model-panel__title">{{ module.header.title }}</h2>
+    {% if module.header.subtitle %}
+      <div class="rc-model-panel__kicker">{{ module.header.subtitle }}</div>
+    {% endif %}
+    <div class="rc-model-panel__divider" aria-hidden="true"></div>
+  </header>
+
+  {# ===== Row 2: Amenities ===== #}
+  <div class="rc-model-panel__amenities">
+    {% if module.amenities_heading %}
+      <div class="rc-model-panel__section-label">{{ module.amenities_heading }}</div>
+    {% endif %}
+
+    <div class="rc-model-panel__amenities-grid">
+      {% for a in module.amenities %}
+        <div class="rc-amenity">
+          <div class="rc-amenity__icon">
+            {% if a.icon and a.icon.src %}
+              {% set icon_src = (a.icon and a.icon.src) ? a.icon.src : "" %}
+
+                {# Fallback automático por nombre #}
+                {% if not icon_src %}
+                    {% set n = (a.title|lower)|trim %}
+                    {% if "bañ" in n %}
+                        {% set icon_src = get_asset_url("../../images/icons/modelos-banos.png") %}
+                    {% elif "estacion" in n %}
+                        {% set icon_src = get_asset_url("../../images/icons/modelos-estacionamiento.png") %}
+                    {% elif "recám" in n or "recam" in n %}
+                        {% set icon_src = get_asset_url("../../images/icons/modelos-recamaras.png") %}
+                    {% elif "terreno" in n %}
+                        {% set icon_src = get_asset_url("../../images/icons/modelos-terreno.png") %}
+                    {% elif "tipo" in n %}
+                        {% set icon_src = get_asset_url("../../images/icons/modelos-tipo-casa.png") %}
+                    {% endif %}
+                {% endif %}
+
+                {% if icon_src %}
+                <img
+                    src="{{ icon_src|escape_url }}"
+                    alt="{{ (a.icon and a.icon.alt) ? a.icon.alt : a.title|escape_attr }}"
+                    loading="lazy"
+                >
+                {% endif %}
+
+            {% endif %}
+          </div>
+          <div class="rc-amenity__meta">
+            <div class="rc-amenity__name">{{ a.title }}</div>
+            <div class="rc-amenity__value">{{ a.value }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# ===== Row 3: Two columns (Overview / Details) ===== #}
+  <div class="rc-model-panel__bottom">
+    <div class="rc-model-panel__col rc-model-panel__col--overview">
+      <div class="rc-model-panel__section-label">{{ module.overview.subtitle }}</div>
+      <div class="rc-model-panel__rule" aria-hidden="true"></div>
+
+      <div class="rc-model-panel__overview-content">
+        {{ module.overview.content }}
+      </div>
+
+      {% set btn = module.overview.button_link %}
+      {% set href = (btn and btn.url and btn.url.href) ? btn.url.href : "" %}
+      {% if module.overview.button_text and href %}
+        {% set newtab = (btn.open_in_new_tab) ? " target=\"_blank\" rel=\"noopener\"" : "" %}
+        <a class="rc-model-panel__btn" href="{{ href|escape_url }}"{{ newtab|safe }}>
+          {{ module.overview.button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="rc-model-panel__col rc-model-panel__col--details">
+      <div class="rc-model-panel__section-label">{{ module.details.subtitle }}</div>
+      <div class="rc-model-panel__rule" aria-hidden="true"></div>
+
+      <div class="rc-model-panel__details-box">
+        {% for d in module.details.items %}
+          <div class="rc-detail-row">
+            <div class="rc-detail-row__label">{{ d.item_label }}</div>
+            <div class="rc-detail-row__value">{{ d.value }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</section>

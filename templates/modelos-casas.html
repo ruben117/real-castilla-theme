@@ -136,32 +136,60 @@
       {% dnd_row %}
         
         {% dnd_module
-          path="@hubspot/header",
-          header_tag="h2",
-          value={{ context.heading_title or "Elige el escenario de tu nueva vida desde $1,179,000" }},
-          width=5,
-          extra_classes="heading-modelos-slider"
+          path="../modules/model-info-panel",
+
+          amenities=[
+            {
+              "icon": {
+                "src": context.icon_recamaras or get_asset_url("../images/icons/modelos-recamaras.png"),
+                "alt": "Recámaras",
+                "loading": "lazy"
+              },
+              "title": "Recámaras",
+              "value": "3"
+            },
+            {
+              "icon": {
+                "src": context.icon_banos or get_asset_url("../images/icons/modelos-banos.png"),
+                "alt": "Baños",
+                "loading": "lazy"
+              },
+              "title": "Baños",
+              "value": "3"
+            },
+            {
+              "icon": {
+                "src": context.icon_estacionamientos or get_asset_url("../images/icons/modelos-estacionamiento.png"),
+                "alt": "Estacionamientos",
+                "loading": "lazy"
+              },
+              "title": "Estacionamientos",
+              "value": "1"
+            },
+            {
+              "icon": {
+                "src": context.icon_tipo or get_asset_url("../images/icons/modelos-tipo-casa.png"),
+                "alt": "Tipo",
+                "loading": "lazy"
+              },
+              "title": "Tipo",
+              "value": "Casa"
+            },
+            {
+              "icon": {
+                "src": context.icon_terreno or get_asset_url("../images/icons/modelos-terreno.png"),
+                "alt": "Terreno (m2)",
+                "loading": "lazy"
+              },
+              "title": "Terreno (m2)",
+              "value": "90 m²"
+            }
+          ]
+
         %}
-
         {% end_dnd_module %}
+
       {% end_dnd_row %}
-      {% dnd_row %}
-
-          {% dnd_module
-            path="@hubspot/rich_text",
-            html="<p>Nuestras <strong>casas residenciales modernas están diseñadas</strong> para adaptarse a tu estilo y proyecto de vida. Todas nuestras opciones cuentan con acabados de alta calidad y espacios optimizados para tu comodidad.</p>",
-            width=7,
-            class="home-models-text"
-          %}
-
-        {% end_dnd_module %}
-      {% end_dnd_row %}
-      {% dnd_row %}
-
-          {% dnd_module path="../modules/modelos-propiedades-slider" %}
-          {% end_dnd_module %}
-      
-        {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
