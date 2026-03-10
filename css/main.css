@@ -45,6 +45,7 @@ Helper classes with ability to override anything that comes before it
 :root {
   --color-primary: #C5A028;
   --color-secondary: #2D2D2D;
+  --color-black: #171717;
   --color-text: #8B929F;
   --color-highlight: #C5A028;
   --color-highlight-secondary: #000000;
@@ -704,6 +705,26 @@ a, a:hover{text-decoration: none !important;}
   background: var(--color-secondary);
   color: #fff;
 }
+.hs-error-msg {
+    color: #EF6B51 !important;
+    margin-top: 0.35rem;
+    font-size: 12px;
+}
+form .hs-error-msgs > li {
+  display: block;
+  margin: 0 !important;
+}
+.rc-contact-form input[type=radio] {
+    width: 5% !important;
+}
+form label {
+    color: var(--color-secondary) !important;
+    margin:0px;
+    font-size: 16px;
+}
+.hs-form-radio{
+  margin:0px !important;
+}
 
 /*Ubicación*/
 /* Ubicación: título grande centrado */
@@ -866,11 +887,12 @@ a, a:hover{text-decoration: none !important;}
 @media screen and (min-width: 768px) {
   .hero-container-style-1 .dnd-section:first-child{
     position: relative;
-    height: 500px;
-    margin-bottom: -60px;
+    height: 580px;
+    margin-bottom: 0px;
   }
   .modelos-casas-container .dnd-section:first-child{
     height: 700px;
+    margin-bottom: 0px;
   }
 }
 
@@ -893,4 +915,9 @@ a, a:hover{text-decoration: none !important;}
 }
 .modelos-casas-container .headeing-modelos-casas h3{
   margin-bottom: 15px;
+}
+
+.slider-modelos-casas .rc-models-slide__head,
+.slider-modelos-casas .rc-models-slide__body{
+  display: none !important;
 }

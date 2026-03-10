@@ -1,0 +1,119 @@
+.rc-img-carousel{
+  width: 100%;
+  position: relative;
+}
+
+.rc-img-carousel__viewport{
+  overflow: hidden;
+  width: 100%;
+  touch-action: pan-y; /* swipe horizontal sin bloquear scroll */
+  cursor: grab;
+}
+
+.rc-img-carousel.is-dragging .rc-img-carousel__viewport{
+  cursor: grabbing;
+}
+
+/* Track sin gap para que 60-25-15 quepa en 100% */
+.rc-img-carousel__track{
+  display: flex;
+  gap: 0;
+  will-change: transform;
+  transition: transform .35s ease;
+  align-items: flex-start;
+}
+
+/* Convertimos el "gap" a padding interno del slide */
+.rc-img-slide{
+  flex: 0 0 var(--rc-inactive, 25%);
+  min-width: 0;
+  padding-right: var(--rc-gap, 24px);
+  box-sizing: border-box;
+}
+
+/* Opcional: que el último (y clones) no metan padding extra al final */
+.rc-img-slide:last-child{
+  padding-right: 0;
+}
+
+.rc-img-slide.is-active{ flex-basis: var(--rc-active, 60%); }
+.rc-img-slide.is-peek{ flex-basis: var(--rc-peek, 15%); }
+/* widths 60/25/15 */
+.rc-img-slide{
+  flex: 0 0 var(--rc-inactive, 25%);
+  min-width: 0;
+}
+
+.rc-img-slide.is-active{
+  flex-basis: var(--rc-active, 60%);
+}
+
+.rc-img-slide.is-peek{
+  flex-basis: var(--rc-peek, 15%);
+}
+
+/* media */
+.rc-img-slide__media{
+  border-radius: var(--rc-radius, 6px);
+  overflow: hidden;
+  background: #eee;
+  height: var(--rc-media-h, 420px); /* calculado por JS según el activo */
+}
+
+.rc-img-slide__media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* nav */
+.rc-img-carousel__nav{
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+
+.rc-img-carousel__btn{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(197,160,40,.75);
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+}
+
+/* bullets centered under images */
+.rc-img-carousel__bullets{
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.rc-img-bullet{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(0,0,0,.2);
+  cursor: pointer;
+}
+
+.rc-img-bullet.is-active{
+  background: var(--rc-bullet, #C5A028);
+}
+
+/* responsive */
+@media (max-width: 991px){
+  .rc-img-slide,
+  .rc-img-slide.is-active,
+  .rc-img-slide.is-peek{
+    flex-basis: 85%;
+  }
+}

@@ -10,6 +10,8 @@
   font-size: 32px;
   font-weight: 500;
   margin: 0 0 10px;
+  color: var(--color-black);
+  font-weight: 500 !important;
 }
 
 .rc-model-panel__kicker{
@@ -51,6 +53,7 @@
   display: grid;
   grid-template-columns: repeat(var(--rc-amen-cols, 5), minmax(0, 1fr));
   gap: 18px 26px;
+  margin-bottom: 2rem;
 }
 
 .rc-amenity{
@@ -62,23 +65,23 @@
 .rc-amenity__icon{
   width: 54px;
   height: 54px;
-  border: 1px solid rgba(197,160,40,.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .rc-amenity__icon img{
-  width: 26px;
-  height: 26px;
+  width: 54px;
+  height: 54px;
   object-fit: contain;
   display: block;
 }
 
 .rc-amenity__name{
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--color-black);
 }
 
 .rc-amenity__value{
@@ -101,6 +104,16 @@
   color: rgba(0,0,0,.60);
   line-height: 1.6;
 }
+.rc-model-panel__overview-content p{
+  margin: 0 0 10px;
+  line-height: 17px;
+}
+.rc-model-panel__overview-content h2{
+  font-size: var(--font-size-highlight,30px);
+  color: var(--color-black);
+  font-weight: 500 !important;
+  margin: 0 0 15px;
+}
 
 .rc-model-panel__overview-content strong{
   color: rgba(0,0,0,.95);
@@ -122,8 +135,10 @@
 /* Details box */
 .rc-model-panel__details-box{
   margin-top: 18px;
-  background: #e7e7e7;
+  background: #FAFAFA;
   padding: 22px 24px;
+  font-size: var(--font-size-highlight);
+  line-height: 2;
 }
 
 .rc-detail-row{

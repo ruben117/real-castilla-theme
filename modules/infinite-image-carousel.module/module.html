@@ -1,0 +1,56 @@
+{% set uid = name|replace(" ", "_")|replace("-", "_") %}
+{% set imgs = module.images or [] %}
+
+{% set bullet = module.styles.layout.bullet_color.color|default("#C5A028") %}
+{% set show_nav = module.settings.show_nav %}
+{% set show_bullets = module.settings.show_bullets %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .rc-img-carousel--{{ uid }}{
+    --rc-active: {{ module.styles.layout.active_width|default(60) }}%;
+    --rc-inactive: {{ module.styles.layout.inactive_width|default(25) }}%;
+    --rc-peek: {{ module.styles.layout.peek_width|default(15) }}%;
+    --rc-gap: {{ module.styles.layout.gap|default(24) }}px;
+    --rc-radius: {{ module.styles.layout.radius|default(6) }}px;
+    --rc-bullet: {{ bullet }};
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="rc-img-carousel rc-img-carousel--{{ uid }}" data-rc-carousel>
+
+  <div class="rc-img-carousel__viewport" data-rc-viewport tabindex="0" aria-label="Carrusel de imágenes">
+    <div class="rc-img-carousel__track" data-rc-track>
+      {# El JS clona, aquí solo renderizamos los originales #}
+      {% for it in imgs %}
+        {% set src = (it.image and it.image.src) ? it.image.src : "" %}
+        {% if src %}
+          <figure class="rc-img-slide" data-rc-slide data-index="{{ loop.index0 }}">
+            <div class="rc-img-slide__media">
+              <img src="{{ src|escape_url }}" alt="{{ it.alt|default('')|escape_attr }}" loading="lazy">
+            </div>
+          </figure>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if show_nav %}
+  <div class="rc-img-carousel__nav">
+    <button class="rc-img-carousel__btn" type="button" data-rc-prev aria-label="Anterior">‹</button>
+    <button class="rc-img-carousel__btn" type="button" data-rc-next aria-label="Siguiente">›</button>
+  </div>
+  {% endif %}
+
+  {% if show_bullets %}
+  <div class="rc-img-carousel__bullets" data-rc-bullets aria-label="Bullets">
+    {% for it in imgs %}
+      <button class="rc-img-bullet{% if loop.first %} is-active{% endif %}" type="button" data-rc-bullet="{{ loop.index0 }}" aria-label="Ir a slide {{ loop.index }}"></button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div>

@@ -97,7 +97,7 @@
         "name": "content",
         "label": "Contenido",
         "type": "richtext",
-        "default": "<p><strong>Torralba*</strong>&nbsp;&nbsp;<strong>$2,103,200</strong></p><p>*El costo corresponde al precio de contado en el modelo Torralba, puede variar dependiendo el prototipo, financiamiento y gastos.</p><p><strong>Desde $18,845 x mes</strong></p><p>*Torralba: La mensualidad corresponde al modelo Torralba) mediante financiamiento Infonavit.</p><p>*La vivienda no incluye mobiliario ni decoraciones.</p>"
+        "default": "<h2>Torralba $2,103,200*</h2><p></strong></p><p>*El costo corresponde al precio de contado en el modelo Torralba, puede variar dependiendo el prototipo, financiamiento y gastos.</p><h2>Desde $18,845 x mes</h2><p>*Torralba: La mensualidad corresponde al modelo Torralba) mediante financiamiento Infonavit.</p><p>*La vivienda no incluye mobiliario ni decoraciones.</p>"
       },
       {
         "name": "button_text",

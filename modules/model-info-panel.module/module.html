@@ -73,7 +73,7 @@
   </div>
 
   {# ===== Row 3: Two columns (Overview / Details) ===== #}
-  <div class="rc-model-panel__bottom">
+  <div class="rc-model-panel__bottom m-b-60">
     <div class="rc-model-panel__col rc-model-panel__col--overview">
       <div class="rc-model-panel__section-label">{{ module.overview.subtitle }}</div>
       <div class="rc-model-panel__rule" aria-hidden="true"></div>
@@ -86,7 +86,7 @@
       {% set href = (btn and btn.url and btn.url.href) ? btn.url.href : "" %}
       {% if module.overview.button_text and href %}
         {% set newtab = (btn.open_in_new_tab) ? " target=\"_blank\" rel=\"noopener\"" : "" %}
-        <a class="rc-model-panel__btn" href="{{ href|escape_url }}"{{ newtab|safe }}>
+        <a class="btn btn-gold m-t-20" href="{{ href|escape_url }}"{{ newtab|safe }}>
           {{ module.overview.button_text }}
         </a>
       {% endif %}
