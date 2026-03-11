@@ -49,6 +49,6 @@
     setActive(0);
     start();
 
-    window.addEventListener('resize', () => setActive(index));
+    window.addEventListener('resize', () => setActive(index), { passive: true });
   });
 })();

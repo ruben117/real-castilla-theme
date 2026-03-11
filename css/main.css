@@ -90,6 +90,10 @@ p, p span{
   font-size: var(--font-size-base);
   color: var(--color-text);
 }
+ins{
+  text-decoration: none;
+  color: var(--color-highlight);
+}
 a, a:hover{text-decoration: none !important;}
 
 /*Theme*/
@@ -445,8 +449,8 @@ a, a:hover{text-decoration: none !important;}
 }
 
 /*Hero Banner*/
-.hero-custom-typography h1 {
-    font-family: 'Montserrat', sans-serif; /* Asumiendo una fuente similar */
+.hero-custom-typography h1,
+.hero-custom-typography h2 {
     font-weight: 300;
     color: #ffffff;
     font-size: 42px;
@@ -504,11 +508,6 @@ a, a:hover{text-decoration: none !important;}
 .cta-button-gold:hover {
   background-color: #c49d40;
   color: #000000;
-}
-
-/* Gradiente para oscurecer la imagen y que se lea el texto */
-.hero-overlay {
-  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
 }
 
 

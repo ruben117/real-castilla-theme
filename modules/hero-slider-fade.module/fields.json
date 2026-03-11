@@ -1,51 +1,90 @@
 [
   {
-    "name": "slides",
-    "label": "Slides",
+    "name": "content",
+    "label": "Contenido",
     "type": "group",
-    "required": true,
-    "occurrence": { "min": 2, "max": 10 },
     "children": [
-      { "name": "headline", "label": "Título (HTML)", "type": "richtext", "required": true },
-      { "name": "subheadline", "label": "Subtítulo", "type": "text" },
-
       {
-        "name": "bg_image",
-        "label": "Imagen fondo",
-        "type": "image",
-        "responsive": true,
-        "resizable": true
-      },
-      {
-        "name": "bg_align",
-        "label": "Alineación vertical fondo",
-        "type": "choice",
-        "display": "select",
-        "choices": [
-          ["middle", "Middle"],
-          ["bottom", "Bottom"]
+        "name": "slides",
+        "label": "Slides",
+        "type": "group",
+        "required": true,
+        "occurrence": { "min": 2, "max": 10 },
+        "default": [
+          {
+            "headline": "<h1>¡<ins>Independencia</ins> que se vive, <ins>privacidad</ins> que se siente!</h1>",
+            "subheadline": "En Real Castilla 1, hemos creado una comunidad donde la privacidad, el diseño y la seguridad tuya y de tu familia son nuestra prioridad.",
+            "bg_align": "middle",
+            "cta_text": "Conoce nuestros prototipos",
+            "cta_link": {
+              "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            }
+          },
+          {
+            "headline": "<h1>Vive en la exclusividad y privacidad de tu espacio en Real Castilla.</h1>",
+            "subheadline": "Residencias en venta de primer nivel a solo 20 minutos de Tepotzotlán",
+            "bg_align": "bottom",
+            "cta_text": "",
+            "cta_link": {
+              "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            }
+          }
         ],
-        "default": "middle"
-      },
-
-      {
-        "name": "fg_image",
-        "label": "Imagen derecha (opcional)",
-        "type": "image",
-        "responsive": true,
-        "resizable": true
-      },
-
-      {
-        "name": "cta_text",
-        "label": "CTA: texto",
-        "type": "text",
-        "default": "Conoce nuestros prototipos"
-      },
-      {
-        "name": "cta_link",
-        "label": "CTA: enlace",
-        "type": "link"
+        "children": [
+          {
+            "name": "headline",
+            "label": "Título (HTML)",
+            "type": "richtext",
+            "required": true
+          },
+          {
+            "name": "subheadline",
+            "label": "Subtítulo",
+            "type": "text",
+            "default": ""
+          },
+          {
+            "name": "bg_image",
+            "label": "Imagen fondo",
+            "type": "image",
+            "responsive": true,
+            "resizable": true
+          },
+          {
+            "name": "bg_align",
+            "label": "Alineación vertical fondo",
+            "type": "choice",
+            "display": "select",
+            "choices": [["middle", "Middle"], ["bottom", "Bottom"]],
+            "default": "middle"
+          },
+          {
+            "name": "fg_image",
+            "label": "Imagen derecha (opcional)",
+            "type": "image",
+            "responsive": true,
+            "resizable": true
+          },
+          {
+            "name": "cta_text",
+            "label": "CTA: texto",
+            "type": "text",
+            "default": ""
+          },
+          {
+            "name": "cta_link",
+            "label": "CTA: enlace",
+            "type": "link"
+          }
+        ]
       }
     ]
   },
@@ -83,20 +122,11 @@
         "type": "group",
         "children": [
           {
-            "name": "content_width",
-            "label": "Ancho contenedor (px)",
-            "type": "number",
-            "min": 900,
-            "max": 1400,
-            "step": 10,
-            "default": 1200
-          },
-          {
             "name": "min_height",
             "label": "Altura mínima (px)",
             "type": "number",
             "min": 420,
-            "max": 900,
+            "max": 1100,
             "step": 10,
             "default": 680
           }

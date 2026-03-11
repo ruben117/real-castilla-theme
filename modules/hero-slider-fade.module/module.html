@@ -1,26 +1,24 @@
 {% set uid = name|replace(" ", "_")|replace("-", "_") %}
-{% set slides = module.slides or [] %}
+{% set slides = module.content.slides or [] %}
 
 {% set autoplay = module.settings.autoplay %}
 {% set interval = module.settings.interval_ms|default(6500) %}
 
-{# ====== FALLBACKS (según tu mensaje) ====== #}
+{# ====== FALLBACKS ====== #}
 {% set fb_bg_1 = get_asset_url("../../images/bgk-hero.png") %}
 {% set fb_fg_1 = get_asset_url("../../images/hero-pareja-llaves.png") %}
-{% set fb_title_1 = "<h1>¡Independencia que se vive, privacidad que se siente!</h1>" %}
-{% set fb_text_1 = "En Real Castilla, hemos creado una comunidad donde la privacidad, el diseño y la seguridad tuya y de tu familia son nuestra prioridad." %}
-{% set fb_cta_1 = "Conoce nuestros prototipos" %}
 
 {% set fb_bg_2 = get_asset_url("../../images/bgk-hero-2.png") %}
 {% set fb_fg_2 = get_asset_url("../../images/hero-torre-real-castilla.png") %}
-{% set fb_title_2 = "<h1>Vive en la exclusividad y privacidad de tu espacio en Real Castilla.</h1>" %}
-{% set fb_text_2 = "Residencias en venta de primer nivel a solo 20 minutos de Tepotzotlán" %}
+
+{# Importante: NO reasignar `slides`, usamos una variable local #}
+{% set render_slides = slides if slides|length > 0 else [{}, {}] %}
 
 {% require_css %}
 <style>
   {% scope_css %}
   .rc-hero-slider--{{ uid }}{
-    --rc-hero-minh: {{ module.styles.layout.min_height|default(880) }}px;
+    --rc-hero-minh: {{ module.styles.layout.min_height|default(680) }}px;
     --rc-gold: #C5A028;
   }
   {% end_scope_css %}
@@ -36,14 +34,7 @@
 >
   <div class="rc-hero-slider__slides">
 
-    {# Si por alguna razón aún no hay slides, renderizamos 2 slides fallback #}
-    {% if slides|length == 0 %}
-      {% set slides = [{}, {}] %}
-    {% endif %}
-
-    {% for s in slides %}
-
-      {# ===== Fallback por índice (0 => slide1, 1 => slide2, 2+ recicla slide2) ===== #}
+    {% for s in render_slides %}
       {% if loop.index0 == 0 %}
         {% set bg_fallback = fb_bg_1 %}
         {% set fg_fallback = fb_fg_1 %}
@@ -58,36 +49,26 @@
         {% set cta_text_fallback = "" %}
       {% endif %}
 
-      {# Imágenes (si el editor no eligió, usamos fallback del theme) #}
       {% set bg_src = (s.bg_image and s.bg_image.src) ? s.bg_image.src : bg_fallback %}
       {% set fg_src = (s.fg_image and s.fg_image.src) ? s.fg_image.src : fg_fallback %}
 
-      {# Contenido (si está vacío, usamos fallback) #}
-      {% set headline_html = s.headline ? s.headline : title_fallback %}
-      {% set sub_text = s.subheadline ? s.subheadline : text_fallback %}
+      {% set headline_html = (s.headline and s.headline|length > 0) ? s.headline : title_fallback %}
+      {% set sub_text = (s.subheadline and s.subheadline|length > 0) ? s.subheadline : text_fallback %}
 
-      {# Alineación vertical del background #}
       {% set align = s.bg_align|default("middle") %}
 
-      {# CTA (link type: link) #}
       {% set btn = s.cta_link %}
       {% set btn_href = (btn and btn.url and btn.url.href) ? btn.url.href : "#" %}
       {% set btn_newtab = (btn and btn.open_in_new_tab) ? " target=\"_blank\" rel=\"noopener\"" : "" %}
-      {% set cta_text = s.cta_text ? s.cta_text : cta_text_fallback %}
+      {% set cta_text = (s.cta_text and s.cta_text|length > 0) ? s.cta_text : cta_text_fallback %}
 
       <article class="rc-hero-slide{% if loop.first %} is-active{% endif %}" data-slide data-align="{{ align }}">
-        <img
-          class="rc-hero-slide__bg"
-          src="{{ bg_src|escape_url }}"
-          alt=""
-          loading="{% if loop.first %}eager{% else %}lazy{% endif %}"
-        >
+        <img class="rc-hero-slide__bg" src="{{ bg_src|escape_url }}" alt="" loading="{% if loop.first %}eager{% else %}lazy{% endif %}">
 
         <div class="rc-hero-slide__inner content-wrapper">
           <div class="rc-hero-slide__grid">
 
             <div class="rc-hero-slide__left hero-custom-typography">
-
               <div class="rc-hero-headline">
                 {{ headline_html }}
               </div>
@@ -102,9 +83,8 @@
                 <a class="btn btn-gold-black" href="{{ btn_href|escape_url }}"{{ btn_newtab|safe }}>{{ cta_text }}</a>
               {% endif %}
 
-              {# Bullets debajo del CTA (siempre visibles aunque no haya CTA) #}
               <div class="rc-hero-bullets" role="tablist" aria-label="Navegación del hero">
-                {% for _ in slides %}
+                {% for _ in render_slides %}
                   <button
                     class="rc-hero-bullet{% if loop.index0 == 0 and loop.parent.first %} is-active{% endif %}"
                     type="button"
@@ -114,24 +94,18 @@
                   ></button>
                 {% endfor %}
               </div>
-
             </div>
 
             <div class="rc-hero-slide__right">
               {% if fg_src %}
-                <img
-                  class="rc-hero-slide__fg"
-                  src="{{ fg_src|escape_url }}"
-                  alt="{{ (s.fg_image and s.fg_image.alt) ? s.fg_image.alt : ''|escape_attr }}"
-                  loading="lazy"
-                >
+                <img class="rc-hero-slide__fg" src="{{ fg_src|escape_url }}" alt="{{ (s.fg_image and s.fg_image.alt) ? s.fg_image.alt : ''|escape_attr }}" loading="lazy">
               {% endif %}
             </div>
 
           </div>
         </div>
       </article>
-
     {% endfor %}
+
   </div>
 </section>
