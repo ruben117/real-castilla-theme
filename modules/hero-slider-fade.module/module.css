@@ -1,6 +1,6 @@
 .rc-hero-slider{
   position: relative;
-  min-height: var(--rc-hero-minh, 680px);
+  min-height: var(--rc-hero-minh, 750px);
   overflow: hidden;
 }
 
@@ -49,31 +49,44 @@
   position: relative;
   z-index: 2;
   padding-top: 123px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   height: 100%;
+  min-height: inherit;
 }
 
 .rc-hero-slide__grid{
   display: flex;
-  gap: 24px;
-  align-items: center;
+  gap: 0;
+  align-items: stretch;   /* ← ambas columnas se estiran al 100% de altura */
   height: 100%;
+  min-height: inherit;
 }
 
 .rc-hero-slide__left{
   flex: 0 0 58%;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 24px;
+  padding-bottom: 40px;
 }
 
+/* ─── Columna derecha: ocupa TODO el alto del slide ─── */
 .rc-hero-slide__right{
   flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
+  position: relative;   /* contenedor posicionado para el hijo absoluto */
+  overflow: hidden;
 }
 
+/* La imagen derecha se estira al 100% alto × ancho de la columna */
 .rc-hero-slide__fg{
-  max-width: 100%;
-  height: auto;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* llena sin deformar */
+  object-position: center top;
   display: block;
 }
 
@@ -86,37 +99,141 @@
 }
 
 .rc-hero-bullet{
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   border: 0;
   background: rgba(255,255,255,.35);
   cursor: pointer;
   padding: 0;
+  transition: background .3s ease, transform .3s ease;
 }
 
 .rc-hero-bullet.is-active{
   background: var(--rc-gold, #C5A028);
+  transform: scale(1.4);
 }
 
-/* Texto destacado y CTA (si existen en tu theme) */
+/* ─── Animaciones escalonadas de texto ─── */
+@keyframes rc-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  Las clases de animación se aplican únicamente cuando el slide
+  tiene la clase .is-active para que se re-disparen en cada cambio.
+*/
+.rc-hero-slide.is-active .rc-hero-headline,
+.rc-hero-slide.is-active .hero-subheadline,
+.rc-hero-slide.is-active .hero-divider,
+.rc-hero-slide.is-active .btn {
+  opacity: 0;
+  animation: rc-fadeUp .55s ease forwards;
+}
+
+/* Escalonado */
+.rc-hero-slide.is-active .rc-hero-headline  { animation-delay: .15s; }
+.rc-hero-slide.is-active .hero-subheadline  { animation-delay: .32s; }
+.rc-hero-slide.is-active .hero-divider      { animation-delay: .46s; }
+.rc-hero-slide.is-active .btn              { animation-delay: .60s; }
+
+/* Texto destacado y CTA */
 .hero-custom-typography strong,
 .text-highlight{ color: var(--rc-gold, #C5A028); }
 
-.hero-divider{ background-color: var(--rc-gold, #C5A028); }
+/* El botón no debe estirarse en el flex-column de la columna izquierda */
+.rc-hero-slide__left .btn{
+  align-self: flex-start;
+  width: auto;
+}
 
-/* Responsive */
+.hero-divider{
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 14px 0 20px;
+  background-color: var(--rc-gold, #C5A028);
+}
+
 @media (max-width: 991px){
-  .rc-hero-slide__inner{ padding-top: 150px; }
+
+  /* El slider y su wrapper no imponen min-height fija en mobile;
+     la altura la dicta el slide activo */
+  .rc-hero-slider,
+  .rc-hero-slider__slides{
+    min-height: 0;
+  }
+
+  /* Slide inactivo: sigue siendo absolute + oculto (para el fade) */
+  .rc-hero-slide{
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Slide ACTIVO: sale del flujo absoluto → crece con su contenido */
+  .rc-hero-slide.is-active{
+    position: relative;
+    inset: auto;
+  }
+
+  /* Inner */
+  .rc-hero-slide__inner{
+    padding-top: 130px;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* Grid en columna */
   .rc-hero-slide__grid{
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
   }
-  .rc-hero-slide__left{ width: 100%; flex-basis: auto; }
-  .rc-hero-slide__right{ width: 100%; justify-content: flex-start; }
-  .rc-hero-slide__fg{ max-width: 420px; }
+
+  /* Columna izquierda */
+  .rc-hero-slide__left{
+    width: 100%;
+    flex-basis: auto;
+    padding-right: 0;
+    padding-bottom: 24px;
+    justify-content: flex-start;
+  }
+
+  /* Columna derecha: altura fija, flujo normal */
+  .rc-hero-slide__right{
+    width: 100%;
+    position: relative;   /* contenedor para el hijo absoluto */
+    height: 280px;
+    flex-shrink: 0;
+  }
+
+  /* Imagen ocupa toda la caja de la columna derecha */
+  .rc-hero-slide__fg{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    max-width: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
   .rc-hero-slide{ transition: none; }
+  .rc-hero-slide.is-active .rc-hero-headline,
+  .rc-hero-slide.is-active .hero-subheadline,
+  .rc-hero-slide.is-active .hero-divider,
+  .rc-hero-slide.is-active .btn {
+    animation: none;
+    opacity: 1;
+  }
 }

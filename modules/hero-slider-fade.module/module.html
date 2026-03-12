@@ -5,20 +5,19 @@
 {% set interval = module.settings.interval_ms|default(6500) %}
 
 {# ====== FALLBACKS ====== #}
-{% set fb_bg_1 = get_asset_url("../../images/bgk-hero.png") %}
+{% set fb_bg_1 = get_asset_url("../../images/bgk-hero.jpg") %}
 {% set fb_fg_1 = get_asset_url("../../images/hero-pareja-llaves.png") %}
 
-{% set fb_bg_2 = get_asset_url("../../images/bgk-hero-2.png") %}
+{% set fb_bg_2 = get_asset_url("../../images/bgk-hero-2.jpg") %}
 {% set fb_fg_2 = get_asset_url("../../images/hero-torre-real-castilla.png") %}
 
-{# Importante: NO reasignar `slides`, usamos una variable local #}
 {% set render_slides = slides if slides|length > 0 else [{}, {}] %}
 
 {% require_css %}
 <style>
   {% scope_css %}
   .rc-hero-slider--{{ uid }}{
-    --rc-hero-minh: {{ module.styles.layout.min_height|default(680) }}px;
+    --rc-hero-minh: {{ module.styles.layout.min_height|default(745) }}px;
     --rc-gold: #C5A028;
   }
   {% end_scope_css %}
@@ -38,37 +37,49 @@
       {% if loop.index0 == 0 %}
         {% set bg_fallback = fb_bg_1 %}
         {% set fg_fallback = fb_fg_1 %}
-        {% set title_fallback = fb_title_1 %}
-        {% set text_fallback = fb_text_1 %}
-        {% set cta_text_fallback = fb_cta_1 %}
       {% else %}
         {% set bg_fallback = fb_bg_2 %}
         {% set fg_fallback = fb_fg_2 %}
-        {% set title_fallback = fb_title_2 %}
-        {% set text_fallback = fb_text_2 %}
-        {% set cta_text_fallback = "" %}
       {% endif %}
 
       {% set bg_src = (s.bg_image and s.bg_image.src) ? s.bg_image.src : bg_fallback %}
       {% set fg_src = (s.fg_image and s.fg_image.src) ? s.fg_image.src : fg_fallback %}
 
-      {% set headline_html = (s.headline and s.headline|length > 0) ? s.headline : title_fallback %}
-      {% set sub_text = (s.subheadline and s.subheadline|length > 0) ? s.subheadline : text_fallback %}
+      {% set headline_html = (s.headline and s.headline|length > 0) ? s.headline : "" %}
+      {% set sub_text      = (s.subheadline and s.subheadline|length > 0) ? s.subheadline : "" %}
 
       {% set align = s.bg_align|default("middle") %}
 
-      {% set btn = s.cta_link %}
-      {% set btn_href = (btn and btn.url and btn.url.href) ? btn.url.href : "#" %}
-      {% set btn_newtab = (btn and btn.open_in_new_tab) ? " target=\"_blank\" rel=\"noopener\"" : "" %}
-      {% set cta_text = (s.cta_text and s.cta_text|length > 0) ? s.cta_text : cta_text_fallback %}
+      {% set btn         = s.cta_link %}
+      {% set btn_href    = (btn and btn.url and btn.url.href) ? btn.url.href : "#" %}
+      {% set btn_newtab  = (btn and btn.open_in_new_tab) ? " target=\"_blank\" rel=\"noopener\"" : "" %}
+      {% set cta_text    = (s.cta_text and s.cta_text|length > 0) ? s.cta_text : "" %}
 
-      <article class="rc-hero-slide{% if loop.first %} is-active{% endif %}" data-slide data-align="{{ align }}">
-        <img class="rc-hero-slide__bg" src="{{ bg_src|escape_url }}" alt="" loading="{% if loop.first %}eager{% else %}lazy{% endif %}">
+      <article
+        class="rc-hero-slide{% if loop.first %} is-active{% endif %}"
+        data-slide
+        data-align="{{ align }}"
+      >
+        {# Fondo #}
+        <img
+          class="rc-hero-slide__bg"
+          src="{{ bg_src|escape_url }}"
+          alt=""
+          loading="{% if loop.first %}eager{% else %}lazy{% endif %}"
+        >
 
+        {#
+          __inner__ necesita height:100% para que el grid hijo pueda usar
+          align-items:stretch y la columna derecha alcance el 100%.
+          Se pasa min-height vía CSS; aquí sólo nos aseguramos que el
+          wrapper tenga height:100%.
+        #}
         <div class="rc-hero-slide__inner content-wrapper">
           <div class="rc-hero-slide__grid">
 
+            {# ── Columna izquierda: texto ── #}
             <div class="rc-hero-slide__left hero-custom-typography">
+
               <div class="rc-hero-headline">
                 {{ headline_html }}
               </div>
@@ -80,7 +91,10 @@
               <span class="hero-divider"></span>
 
               {% if cta_text %}
-                <a class="btn btn-gold-black" href="{{ btn_href|escape_url }}"{{ btn_newtab|safe }}>{{ cta_text }}</a>
+                <a
+                  class="btn btn-gold-black"
+                  href="{{ btn_href|escape_url }}"{{ btn_newtab|safe }}
+                >{{ cta_text }}</a>
               {% endif %}
 
               <div class="rc-hero-bullets" role="tablist" aria-label="Navegación del hero">
@@ -96,16 +110,22 @@
               </div>
             </div>
 
+            {# ── Columna derecha: imagen a full-height ── #}
             <div class="rc-hero-slide__right">
               {% if fg_src %}
-                <img class="rc-hero-slide__fg" src="{{ fg_src|escape_url }}" alt="{{ (s.fg_image and s.fg_image.alt) ? s.fg_image.alt : ''|escape_attr }}" loading="lazy">
+                <img
+                  class="rc-hero-slide__fg"
+                  src="{{ fg_src|escape_url }}"
+                  alt="{{ (s.fg_image and s.fg_image.alt) ? s.fg_image.alt : ''|escape_attr }}"
+                  loading="lazy"
+                >
               {% endif %}
             </div>
 
-          </div>
-        </div>
+          </div>{# /.rc-hero-slide__grid #}
+        </div>{# /.rc-hero-slide__inner #}
       </article>
     {% endfor %}
 
-  </div>
+  </div>{# /.rc-hero-slider__slides #}
 </section>

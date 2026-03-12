@@ -57,7 +57,7 @@ Helper classes with ability to override anything that comes before it
   --font-size-menu: 16px;
   --font-size-base: 14px;
   --font-size-heading: 24px;
-  --font-size-heading-big: 45px;
+  --font-size-heading-big: 41px;
   --font-size-subheading: 18px;
   --font-size-highlight: 16px;
 }
@@ -97,21 +97,18 @@ ins{
 a, a:hover{text-decoration: none !important;}
 
 /*Theme*/
-.heading-big,
-.heading-big h1,.heading-big h2{
-    font-size: var(--font-size-heading-big);
-    font-weight: 400;
+.heading,.heading h1,.heading h2,
+.heading-big, .heading-big h1,.heading-big h2{
+    font-size: var(--font-size-heading);
+    font-weight: 200 !important;
     line-height: 1.15;
     margin: 0;
     color: var(--color-secondary);
 }
-.heading,
-.heading h1,.heading h2{
-    font-size: var(--font-size-heading);
-    font-weight: 400;
+.heading-big,
+.heading-big h1,.heading-big h2{
+    font-size: var(--font-size-heading-big);
     line-height: 1.15;
-    margin: 0;
-    color: var(--color-secondary);
 }
 .txt-white, .txt-white p, .txt-white span, .txt-white h1, .txt-white h2, .txt-white h3, .txt-white h4{
   color: #fff !important;

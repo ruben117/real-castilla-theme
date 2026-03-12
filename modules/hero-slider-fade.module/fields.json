@@ -25,10 +25,10 @@
             }
           },
           {
-            "headline": "<h1>Vive en la exclusividad y privacidad de tu espacio en Real Castilla.</h1>",
+            "headline": "<h2>Vive en la exclusividad y privacidad de tu espacio en Real Castilla.</h2>",
             "subheadline": "Residencias en venta de primer nivel a solo 20 minutos de Tepotzotlán",
             "bg_align": "bottom",
-            "cta_text": "",
+            "cta_text": "Conoce nuestros prototipos",
             "cta_link": {
               "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
               "open_in_new_tab": false,
