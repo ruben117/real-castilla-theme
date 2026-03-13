@@ -61,11 +61,14 @@
   font-size: var(--font-size-base);
 }
 @media (min-width: 768px){
-  .rc-models-slide.is-peek .rc-models-slide__subtitle{
+  .rc-models-slide__subtitle{
     min-width: 600px;
   }
   .rc-models-slide{
     overflow: hidden;
+  }
+  .rc-models-slide__title {
+    width: 600px;
   }
 }
 

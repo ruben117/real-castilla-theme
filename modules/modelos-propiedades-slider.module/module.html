@@ -26,7 +26,9 @@
             ? get_asset_url("../../images/modelo-torralba.jpg")
             : (loop.index0 == 1
                 ? get_asset_url("../../images/modelo-castilla-te.jpg")
-                : get_asset_url("../../images/modelo-castilla-plus.jpg"))
+                : (loop.index0 == 2
+                    ? get_asset_url("../../images/modelo-castilla-plus.jpg")
+                    : get_asset_url("../../images/modelo-soria.jpg")))
         %}
         {% set img_src = (it.image and it.image.src) ? it.image.src : fallback_img %}
 

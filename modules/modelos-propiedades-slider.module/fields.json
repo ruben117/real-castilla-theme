@@ -30,7 +30,7 @@
       {
         "model": "Modelo Castilla TE",
         "subtitle": "El equilibrio perfecto entre espacio y familia. Diseñado para ofrecer comodidad y una distribución que fluye con tu ritmo de vida.",
-        "description": "<ul><li><strong>Construcción:</strong> Hasta 90 m² de elegancia residencial.</li><li><strong>Distribución:</strong> 3 recámaras | 3 baños completos</li><li><strong>Destaca:</strong> Recámara principal con vestidor y espacios premium para convivencia social.</li></ul>",
+        "description": "<ul><li><strong>Construcción:</strong> Hasta 90 m² con acabados residenciales.</li><li><strong>Distribución:</strong> 3 recámaras | 2 baños completos | 1 lugar de estacionamiento.</li><li><strong>Destaca:</strong> Excelente iluminación natural y posibilidad de expansión.</li></ul>",
         "button_one_text": "Conoce más",
         "button_one_link": {
           "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
@@ -51,7 +51,28 @@
       {
         "model": "Modelo Castilla Plus",
         "subtitle": "El estándar de la privacidad: Sin muros que compartir. Nuestra joya de la corona. Construcción totalmente independiente para un silencio y libertad absolutos.",
-        "description": "<ul><li><strong>Construcción:</strong> Hasta 90 m² de elegancia residencial.</li><li><strong>Distribución:</strong> 3 recámaras | 3 baños completos</li><li><strong>Destaca:</strong> Recámara principal con vestidor y espacios premium para convivencia social.</li></ul>",
+        "description": "<ul><li><strong>Construcción:</strong> Hasta 116 m² de independencia total.</li><li><strong>Distribución:</strong> 3 recámaras | 2 baños | Amplio jardín privado.</li><li><strong>Diferenciador:</strong>  100% Independiente (Sin muros comunes).</li></ul>",
+        "button_one_text": "Conoce más",
+        "button_one_link": {
+          "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
+          "open_in_new_tab": false,
+          "no_follow": false,
+          "sponsored": false,
+          "user_generated_content": false
+        },
+        "button_two_text": "Agenda una visita",
+        "button_two_link": {
+          "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
+          "open_in_new_tab": false,
+          "no_follow": false,
+          "sponsored": false,
+          "user_generated_content": false
+        }
+      },
+      {
+        "model": "Modelo Soria",
+        "subtitle": "Tu primer gran paso hacia la independencia. Ideal para quienes buscan funcionalidad y un diseño inteligente en una comunidad segura.",
+        "description": "<ul><li><strong>Construcción:</strong> Hasta 68 m² de diseño eficiente.</li><li><strong>Distribución:</strong> 2 recámaras | 1 baño | 1 lugar de estacionamiento.</li><li><strong>Highlight:</strong> Opción a crecimiento y espacios optimizados para Home Office.</li></ul>",
         "button_one_text": "Conoce más",
         "button_one_link": {
           "url": { "content_id": null, "type": "EXTERNAL", "href": "#" },
