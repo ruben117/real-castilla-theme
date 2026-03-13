@@ -1,0 +1,53 @@
+{% set uid = name|replace(" ", "_")|replace("-", "_") %}
+{% set items = module.items or [] %}
+
+{% require_css %}
+<style>
+  {% scope_css %}
+  .rc-models-slider--{{ uid }}{
+    --rc-active: {{ module.styles.layout.active_width|default(70) }}%;
+    --rc-inactive: {{ module.styles.layout.inactive_width|default(20) }}%;
+    --rc-peek: {{ module.styles.layout.peek_width|default(10) }}%;
+    --rc-gap: {{ module.styles.layout.gap|default(18) }}px;
+  }
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+<div class="rc-models-slider rc-models-slider--{{ uid }}" data-rc-slider>
+
+  <div class="rc-models-slider__viewport" data-rc-viewport tabindex="0" aria-label="Slider de modelos">
+    <div class="rc-models-slider__track" data-rc-track>
+      {% for it in items %}
+
+        {# Fallback de imágenes del theme (1,2,3) #}
+        {% set fallback_img =
+          loop.index0 == 0
+            ? get_asset_url("../../images/modelo-torralba.jpg")
+            : (loop.index0 == 1
+                ? get_asset_url("../../images/modelo-castilla-te.jpg")
+                : (loop.index0 == 2
+                    ? get_asset_url("../../images/modelo-castilla-plus.jpg")
+                    : get_asset_url("../../images/modelo-soria.jpg")))
+        %}
+        {% set img_src = (it.image and it.image.src) ? it.image.src : fallback_img %}
+
+        <article class="rc-models-slide" data-rc-slide data-index="{{ loop.index0 }}">
+          <div class="rc-models-slide__media">
+            <img
+              src="{{ img_src|escape_url }}"
+              alt="{{ (it.image and it.image.alt) ? it.image.alt : it.model|escape_attr }}"
+              loading="lazy"
+            >
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="rc-models-slider__controls">
+    <button class="rc-models-slider__btn" type="button" data-rc-prev aria-label="Anterior">‹</button>
+    <button class="rc-models-slider__btn" type="button" data-rc-next aria-label="Siguiente">›</button>
+  </div>
+
+</div>

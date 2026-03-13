@@ -9,13 +9,13 @@
         "label": "Título",
         "type": "text",
         "required": true,
-        "default": "Modelo Torralba 4"
+        "default": "Modelo Torralba"
       },
       {
         "name": "subtitle",
         "label": "Subtítulo",
         "type": "text",
-        "default": "DETALLES t"
+        "default": "DETALLES"
       }
     ]
   },
@@ -23,7 +23,7 @@
     "name": "amenities_heading",
     "label": "Amenidades: título",
     "type": "text",
-    "default": "DETALLES 2"
+    "default": ""
   },
   {
     "name": "amenities",
