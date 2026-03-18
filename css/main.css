@@ -232,6 +232,11 @@ a, a:hover{text-decoration: none !important;}
   text-decoration: none;
   font-weight: 600;
 }
+
+.header--rc .header__nav .active a {
+  color: var(--color-highlight);
+}
+
 .header--rc .header__nav .menu__link {
   font-size: var(--font-size-menu);
 }
@@ -781,7 +786,7 @@ form label {
 
 /*Footer*/
 .footer{
-  background: #fff;
+  background: #fff !important;
 }
 
 .footer .footer__container{
@@ -911,6 +916,7 @@ form label {
 }
 .modelos-casas-container .headeing-modelos-casas h3{
   margin-bottom: 15px;
+  color: var(--color-highlight);
 }
 
 .slider-modelos-casas .rc-models-slide__head,

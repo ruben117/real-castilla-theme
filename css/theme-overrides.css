@@ -332,6 +332,10 @@ form,
   background-color: {{ form_title_bg_color }};
 }
 
+form, .submitted-message{
+ background-color:#fff;
+}
+
 
 /* Labels */
 
