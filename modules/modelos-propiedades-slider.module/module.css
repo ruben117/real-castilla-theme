@@ -141,29 +141,56 @@
   color: #fff;
 }
 
-/* Controls */
+/* Controls — posicionados sobre los laterales del slider */
 .rc-models-slider__controls{
-  margin-top: 18px;
+  /* Ocupa exactamente el alto de las imágenes, encima del viewport */
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none; /* el área entre botones no captura eventos */
+  z-index: 10;
+  padding: 0 12px;
 }
 
 .rc-models-slider__btn {
-  width: 40px;
-  height: 40px;
+  pointer-events: all; /* solo los botones reciben clics */
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--color-primary);
-  background: #fff;
+  background: rgba(255,255,255,0.85);
   border-radius: 999px !important;
   cursor: pointer;
   color: var(--color-primary);
   padding: 0;
-  font-size: 1.3rem;
-  line-height: 1rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background .2s, color .2s;
+  flex-shrink: 0;
 }
-.rc-models-slider__btn:hover, .rc-models-slider__btn:focus, .rc-models-slider__btn:active{
+.rc-models-slider__btn:hover,
+.rc-models-slider__btn:focus,
+.rc-models-slider__btn:active{
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
+}
+
+/* Mobile: botones un poco más pequeños */
+@media (max-width: 991px){
+  .rc-models-slider__btn{
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .rc-models-slider__controls{
+    padding: 0 8px;
+  }
 }
 
 /* Responsive: en mobile mejor 1 por vista */
