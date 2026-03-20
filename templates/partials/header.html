@@ -160,6 +160,25 @@
     <div class="header__language-switcher--label-current"> {{ locale_name(locale) }}</div>
   {% endif %}
 {% endmacro %}
+ 
+{% module "header_config"
+  path="/real-castilla-theme/modules/header-config"
+  label="Header Config"
+%}
+ 
+{# Shortcuts para no repetir rutas largas #}
+{% set cfg_topbar    = modules.header_config.topbar %}
+{% set cfg_cta   = modules.header_config.cta_button %}
+ 
+{# Valores con fallback por si el módulo aún no está guardado #}
+{% set tel_href     = (cfg_topbar and cfg_topbar.phone_number) ? cfg_topbar.phone_number : "+525919177470" %}
+{% set tel_display  = (cfg_topbar and cfg_topbar.phone_display) ? cfg_topbar.phone_display : "591 917 7470" %}
+{% set tel_label    = (cfg_topbar and cfg_topbar.topbar_label)  ? cfg_topbar.topbar_label  : "¡Llámanos ahora! Tel:" %}
+ 
+{% set cta_text  = (cfg_cta and cfg_cta.text) ? cfg_cta.text : "Agenda una visita" %}
+{% set cta_href  = (cfg_cta and cfg_cta.link and cfg_cta.link.url and cfg_cta.link.url.href) ? cfg_cta.link.url.href : "https://www.realcastillaresidencial.com.mx/rc-contacto" %}
+{% set cta_new   = (cfg_cta and cfg_cta.link and cfg_cta.link.open_in_new_tab) %}
+ 
 <header class="header header--rc header--overlay" data-rc-sticky-header>
 
   {# Accesibilidad #}
@@ -168,9 +187,9 @@
   {# TOP HEADER (barra superior) #}
   <div class="header__topbar">
     <div class="content-wrapper header__topbar-inner">
-      <a class="header__topbar-link" href="tel:+5919177470" aria-label="Llámanos ahora al 591 917 7470">
+      <a class="header__topbar-link" href="tel:{{ tel_href }}" aria-label="Llámanos ahora al 591 917 7470">
         <span class="header__topbar-icon" aria-hidden="true">📞</span>
-        <span class="header__topbar-text">¡Llámanos ahora! Tel: 591 917 7470</span>
+        <span class="header__topbar-text">{{ tel_label }} {{ tel_display }}</span>
       </a>
     </div>
   </div>
@@ -209,8 +228,10 @@
         </nav>
 
         {# CTA desktop #}
-        <a class="header__cta header__cta--desktop" href="#agenda-demo">
-          Agenda una demo
+        <a class="header__cta header__cta--desktop"
+           href="{{ cta_href }}"
+           {% if cta_new %}target="_blank" rel="noopener"{% endif %}>
+          {{ cta_text }}
         </a>
 
       </div>
@@ -231,9 +252,11 @@
               label="Primary navigation mobile"
             %}
           </nav>
-
-          <a class="header__cta header__cta--mobile" href="#agenda-demo">
-            Agenda una demo
+ 
+          <a class="header__cta header__cta--mobile"
+             href="{{ cta_href }}"
+             {% if cta_new %}target="_blank" rel="noopener"{% endif %}>
+            {{ cta_text }}
           </a>
         </div>
       </div>

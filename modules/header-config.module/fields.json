@@ -1,0 +1,50 @@
+[
+  {
+    "name": "topbar",
+    "label": "Barra superior",
+    "type": "group",
+    "children": [
+      {
+        "name": "phone_number",
+        "label": "Número de teléfono (href)",
+        "type": "text",
+        "default": "+525919177470",
+        "help_text": "Incluye el + y código de país. Ej: +525919177470"
+      },
+      {
+        "name": "phone_display",
+        "label": "Texto del teléfono (visible)",
+        "type": "text",
+        "default": "591 917 7470"
+      },
+      {
+        "name": "topbar_label",
+        "label": "Texto antes del teléfono",
+        "type": "text",
+        "default": "¡Llámanos ahora! Tel:"
+      }
+    ]
+  },
+  {
+    "name": "cta_button",
+    "label": "CTA del header",
+    "type": "group",
+    "children": [
+      {
+        "name": "text",
+        "label": "Texto del botón",
+        "type": "text",
+        "default": "Agenda una visita"
+      },
+      {
+        "name": "link",
+        "label": "Enlace",
+        "type": "link",
+        "default": {
+          "url": { "type": "EXTERNAL", "href": "https://www.realcastillaresidencial.com.mx/rc-contacto" },
+          "open_in_new_tab": false
+        }
+      }
+    ]
+  }
+]
