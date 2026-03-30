@@ -1,0 +1,31 @@
+[
+  {
+    "name": "nav_items",
+    "label": "Elementos de navegación",
+    "type": "group",
+    "occurrence": {
+      "min": 1,
+      "max": 10
+    },
+    "children": [
+      {
+        "name": "label_link",
+        "label": "Texto del enlace",
+        "type": "text",
+        "default": "Sección"
+      },
+      {
+        "name": "anchor_id",
+        "label": "ID de la sección destino (sin #)",
+        "type": "text",
+        "default": "seccion",
+        "help_text": "Debe coincidir con el id del elemento destino en la página. Ejemplo: amenidades"
+      }
+    ],
+    "default": [
+      { "label_link": "Amenidades", "anchor_id": "amenidades" },
+      { "label_link": "Casas",      "anchor_id": "casas" },
+      { "label_link": "Ubicación",  "anchor_id": "ubicacion" }
+    ]
+  }
+]

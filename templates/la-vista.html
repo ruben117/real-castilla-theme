@@ -1,0 +1,41 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: La Vista
+  screenshotPath: ../images/template-previews/la-vista.png
+-->
+{% extends "./layouts/base.html" %}
+
+{{ require_css(get_asset_url("../css/templates/lp-vista.css")) }}
+
+{% block header %}
+  {% include "./partials/header-la-vista.html" %}
+{% endblock header %}
+
+{% block body %}
+{% dnd_area "dnd_area"
+  label="Contenido principal"
+  class="body-container body-container--la-vista"
+%}
+
+  {# ── Hero La Vista ── #}
+  {% dnd_section
+    full_width=true
+    padding={ "top": 0, "bottom": 0 }
+  %}
+    {% dnd_column %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/hero-lv-slider",
+          label="Hero La Vista"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
+{% endblock body %}
+
+{% block footer %}
+{% endblock footer %}

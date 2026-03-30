@@ -1,0 +1,177 @@
+/* =============================================================================
+   LP La Vista — estilos específicos del template
+   Sobreescribe las variables del tema para esta landing page
+   ============================================================================= */
+
+/* Variables de color propias de La Vista */
+:root {
+  --lv-primary:   #0D2D3E;
+  --lv-secondary: #AF8933;
+  --lv-highlight: #D17D20;
+  --lv-text:      #0D2D3E;
+}
+
+/* Sobreescritura de variables del tema base */
+.body-wrapper {
+  --color-primary:   #0D2D3E;
+  --color-secondary: #AF8933;
+  --color-highlight: #D17D20;
+  --color-text:      #0D2D3E;
+}
+
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =============================================================================
+   Header La Vista
+   ============================================================================= */
+
+.header--la-vista {
+  background-color: #ffffff !important;
+  border-bottom: 3px solid var(--lv-primary);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(13, 45, 62, 0.08);
+}
+.body-container--la-vista .dnd-section{
+  padding:0px;
+}
+
+.header--la-vista .header__container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+
+.header--la-vista .header__logo {
+  max-width: 180px;
+  padding-top: 0;
+}
+
+.header--la-vista .header__right {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+}
+
+/* =============================================================================
+   Navegación scroll-to
+   ============================================================================= */
+
+.lv-nav__list {
+  align-items: center;
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lv-nav__link {
+  color: var(--lv-primary);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.lv-nav__link:hover,
+.lv-nav__link:focus {
+  color: var(--lv-highlight);
+}
+
+/* Hamburguesa — oculta en desktop */
+.lv-nav__burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.lv-nav__bar {
+  background-color: var(--lv-primary);
+  border-radius: 2px;
+  display: block;
+  height: 2px;
+  transition: all 0.3s ease;
+  width: 24px;
+}
+
+/* =============================================================================
+   CTA Header
+   ============================================================================= */
+
+.cta-header .button-wrapper {
+  text-align: right;
+}
+
+.cta-header .button {
+  background-color: var(--lv-highlight);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.cta-header .button:hover,
+.cta-header .button:focus {
+  background-color: var(--lv-secondary);
+}
+
+/* =============================================================================
+   Mobile — menú hamburguesa
+   ============================================================================= */
+
+@media (max-width: 767px) {
+  .lv-nav__burger {
+    display: flex;
+    order: 1;
+  }
+
+  .lv-nav {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(13, 45, 62, 0.12);
+    display: none;
+    left: 0;
+    padding: 1rem 1.5rem 1.5rem;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 99;
+  }
+
+  .lv-nav.lv-nav--open {
+    display: block;
+  }
+
+  .lv-nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .lv-nav__link {
+    font-size: 1.0625rem;
+  }
+
+  .header--la-vista .header__right {
+    gap: 1rem;
+  }
+
+  .cta-header .button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}

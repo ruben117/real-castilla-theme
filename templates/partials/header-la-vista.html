@@ -1,0 +1,43 @@
+<!--
+  label: Header La Vista
+-->
+
+<header class="header header--la-vista" data-rc-sticky-header>
+
+  <a href="#main-content" class="header__skip">Skip to content</a>
+
+  <div class="content-wrapper header__container">
+
+    {# Logo #}
+    <div class="header__logo">
+      {% module "lv_logo"
+        path="@hubspot/logo"
+        logo_image={
+          "src": get_asset_url("../../images/logotipo-real-castilla-color.png"),
+          "alt": "La Vista Residencial",
+          "loading": "eager"
+        }
+      %}
+    </div>
+
+    <div class="header__right">
+
+      {# Navegación scroll-to #}
+      {% module "lv_nav"
+        path="../../modules/nav-scrollto"
+        label="Navegación"
+      %}
+
+      {# CTA #}
+      {% module "lv_cta"
+        path="/real-castilla-theme/modules/button"
+        label="CTA Header"
+        button_text="¡Reserva tu visita!"
+        extra_classes="cta-header"
+      %}
+
+    </div>
+
+  </div>
+
+</header>

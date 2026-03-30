@@ -1,0 +1,29 @@
+{# Fallback si no hay items configurados #}
+{% set fb_items = [
+  {"label_link": "Amenidades", "anchor_id": "amenidades"},
+  {"label_link": "Casas",      "anchor_id": "casas"},
+  {"label_link": "Ubicación",  "anchor_id": "ubicacion"}
+] %}
+{% set nav_items = module.nav_items if (module.nav_items and module.nav_items|length > 0) else fb_items %}
+
+{# Botón hamburguesa — solo visible en mobile #}
+<button class="lv-nav__burger"
+        type="button"
+        aria-label="Abrir menú"
+        aria-controls="lv-nav-list"
+        aria-expanded="false">
+  <span class="lv-nav__bar"></span>
+  <span class="lv-nav__bar"></span>
+  <span class="lv-nav__bar"></span>
+</button>
+
+{# Lista de enlaces scroll-to #}
+<nav class="lv-nav" id="lv-nav-list" aria-label="Navegación principal">
+  <ul class="lv-nav__list">
+    {% for item in nav_items %}
+      <li class="lv-nav__item">
+        <a class="lv-nav__link" href="#{{ item.anchor_id }}">{{ item.label_link }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
