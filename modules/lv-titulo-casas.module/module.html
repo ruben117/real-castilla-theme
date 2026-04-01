@@ -1,0 +1,40 @@
+{% set accent_map = {
+  "gold": "#AF8933",
+  "orange": "#D17D20",
+  "teal": "#31A4AA",
+  "purple": "#7C6CB7"
+} %}
+
+{% set accent_color = accent_map[module.estilo_color] if module.estilo_color in accent_map else "#AF8933" %}
+
+<div class="tp-house-card" style="--tp-text: #0D2D3E; --tp-accent: {{ accent_color }};">
+  {% if module.subtitulo %}
+    <div class="tp-house-card__subtitle">{{ module.subtitulo }}</div>
+  {% endif %}
+
+  {% if module.titulo %}
+    <h2 class="tp-house-card__title">{{ module.titulo }}</h2>
+  {% endif %}
+
+  {% if module.amenidad_exclusiva %}
+    <div class="tp-house-card__amenity">{{ module.amenidad_exclusiva }}</div>
+  {% endif %}
+
+  {% if module.construccion %}
+    <div class="tp-house-card__construction">{{ module.construccion }}</div>
+  {% endif %}
+
+  {% if module.mostrar_divisor %}
+    <hr class="tp-house-card__divider">
+  {% endif %}
+
+  {% if module.precio %}
+    <div class="tp-house-card__price">{{ module.precio }}</div>
+  {% endif %}
+
+  {% if module.descripcion %}
+    <div class="tp-house-card__description">
+      {{ module.descripcion }}
+    </div>
+  {% endif %}
+</div>

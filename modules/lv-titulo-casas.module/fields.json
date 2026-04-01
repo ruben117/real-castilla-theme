@@ -1,0 +1,85 @@
+[
+  {
+    "name": "subtitulo",
+    "label": "Subtítulo",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Casa"
+  },
+  {
+    "name": "titulo",
+    "label": "Título",
+    "required": true,
+    "locked": false,
+    "type": "text",
+    "default": "Scordia Plus"
+  },
+  {
+    "name": "amenidad_exclusiva",
+    "label": "Amenidad exclusiva",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Roof Top y Jardín de 31 m²"
+  },
+  {
+    "name": "construccion",
+    "label": "Construcción",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "197.84 m² construcción / 137 m² terreno"
+  },
+  {
+    "name": "mostrar_divisor",
+    "label": "Mostrar divisor",
+    "required": false,
+    "locked": false,
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "precio",
+    "label": "Precio",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Precio desde $4,700,000*"
+  },
+  {
+    "name": "descripcion",
+    "label": "Descripción",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<p>La única casa con opción a una 4ta habitación gracias a su espacio flex con baño completo, listo para ti y toda tu familia.</p>"
+  },
+  {
+    "name": "estilo_color",
+    "label": "Color de amenidad y precio",
+    "required": false,
+    "locked": false,
+    "type": "choice",
+    "display": "select",
+    "choices": [
+      [
+        "gold",
+        "#AF8933"
+      ],
+      [
+        "orange",
+        "#D17D20"
+      ],
+      [
+        "teal",
+        "#31A4AA"
+      ],
+      [
+        "purple",
+        "#7C6CB7"
+      ]
+    ],
+    "default": "gold"
+  }
+]

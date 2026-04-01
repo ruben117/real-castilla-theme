@@ -1,0 +1,71 @@
+.tp-house-card {
+    background-color: transparent;
+    color: var(--tp-text);
+    max-width: 600px;
+    padding: 32px 0px;
+}
+
+.tp-house-card__subtitle {
+  color: var(--tp-text);
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 400;
+  margin: 0 0 2px;
+}
+
+.tp-house-card__title {
+    color: var(--tp-text);
+    font-size: 46px;
+    font-weight: 700 !important;
+    line-height: 1.05;
+    margin: 0 0 10px;
+}
+
+.tp-house-card__amenity {
+  color: var(--tp-accent);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.tp-house-card__construction {
+  color: var(--tp-text);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  margin: 0;
+}
+
+.tp-house-card__divider {
+  border: 0;
+  border-top: 2px solid var(--tp-text);
+  opacity: 0.75;
+  margin: 22px 0 24px;
+}
+
+.tp-house-card__price {
+  color: var(--tp-accent);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.tp-house-card__price strong,
+.tp-house-card__price b {
+  font-weight: 700;
+}
+
+.tp-house-card__description,
+.tp-house-card__description p {
+  color: var(--tp-text);
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 400;
+  margin: 0;
+}
+
+.tp-house-card__description p + p {
+  margin-top: 10px;
+}

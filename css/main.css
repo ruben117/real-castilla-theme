@@ -113,6 +113,9 @@ a, a:hover{text-decoration: none !important;}
 .txt-white, .txt-white p, .txt-white span, .txt-white h1, .txt-white h2, .txt-white h3, .txt-white h4{
   color: #fff !important;
 }
+.txt-center, .txt-center p, .txt-center span, .txt-center h1, .txt-center h2, .txt-center h3, .txt-center h4{
+  text-align: center;
+}
 /* Botón Dorado (Reutilizando tu estilo anterior) */
 .btn, button {
   padding: 12px 30px;
