@@ -6,30 +6,28 @@
     "occurrence": { "min": 1, "max": 8 },
     "default": [
       {
-        "heading_slide":  "<h1>Casas en venta<br>en Querétaro<br>En La Vista residencial</h1>",
-        "body":     "<p>Exclusividad en cada espacio<br>a 12 minutos de Los Arcos</p>",
-        "cta_text": "¡Reserva tu visita!",
+        "heading_slide": "<h1>Casas en venta<br>en Querétaro<br>En La Vista residencial</h1>",
+        "body_hero":          "<p>Exclusividad en cada espacio<br>a 12 minutos de Los Arcos</p>",
+        "cta_text":      "¡Reserva tu visita!",
         "cta_link": {
           "url": { "content_id": null, "type": "EXTERNAL", "href": "#formulario" },
           "open_in_new_tab": false,
           "no_follow": false,
           "sponsored": false,
           "user_generated_content": false
-        },
-        "gradient_stop": 65
+        }
       },
       {
-        "heading_slide":  "<h1>El hogar que<br>siempre imaginaste<br>en La Vista</h1>",
-        "body":     "<p>Espacios diseñados para tu familia<br>en el corazón de Querétaro</p>",
-        "cta_text": "¡Reserva tu visita!",
+        "heading_slide": "<h1>El hogar que<br>siempre imaginaste<br>en La Vista</h1>",
+        "body_hero":          "<p>Espacios diseñados para tu familia<br>en el corazón de Querétaro</p>",
+        "cta_text":      "¡Reserva tu visita!",
         "cta_link": {
           "url": { "content_id": null, "type": "EXTERNAL", "href": "#formulario" },
           "open_in_new_tab": false,
           "no_follow": false,
           "sponsored": false,
           "user_generated_content": false
-        },
-        "gradient_stop": 60
+        }
       }
     ],
     "children": [
@@ -37,13 +35,14 @@
         "name": "heading_slide",
         "label": "Título principal",
         "type": "richtext",
-        "required": true
+        "required": true,
+        "default": "<h1>Casas en venta<br>en Querétaro<br>En La Vista residencial</h1>"
       },
       {
-        "name": "body",
+        "name": "body_hero",
         "label": "Texto descriptivo",
         "type": "richtext",
-        "default": ""
+        "default": "<p>Exclusividad en cada espacio<br>a 12 minutos de Los Arcos</p>"
       },
       {
         "name": "cta_text",
@@ -54,7 +53,14 @@
       {
         "name": "cta_link",
         "label": "Enlace del CTA",
-        "type": "link"
+        "type": "link",
+        "default": {
+          "url": { "content_id": null, "type": "EXTERNAL", "href": "#formulario" },
+          "open_in_new_tab": false,
+          "no_follow": false,
+          "sponsored": false,
+          "user_generated_content": false
+        }
       },
       {
         "name": "bg_image",
@@ -62,22 +68,6 @@
         "type": "image",
         "responsive": true,
         "resizable": true
-      },
-      {
-        "name": "gradient_color",
-        "label": "Color del gradiente",
-        "type": "color",
-        "help_text": "Color base del degradado que se superpone sobre la imagen"
-      },
-      {
-        "name": "gradient_stop",
-        "label": "Extensión del gradiente (%)",
-        "type": "number",
-        "min": 20,
-        "max": 100,
-        "step": 5,
-        "default": 65,
-        "help_text": "Qué porcentaje del ancho cubre el color sólido. 65 = 65% de izq a der"
       }
     ]
   },

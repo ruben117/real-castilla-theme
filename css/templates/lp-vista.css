@@ -39,7 +39,7 @@ body,.body-container--la-vista *,
 
 .header--la-vista {
   background-color: #ffffff !important;
-  border-bottom: 3px solid var(--lv-primary);
+  border-bottom: 6px solid var(--lv-primary);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -143,11 +143,33 @@ body,.body-container--la-vista *,
     font-size: 24px;
     font-weight: 700;
 }
+#hs_cos_wrapper_dnd_area-module-4 h2{
+    margin: 0 !important;
+}
+
+/* =============================================================================
+   Formulario de contacto
+============================================================================= */
+.body-container--la-vista form{
+  background:transparent;
+}
+.body-container--la-vista form .hs-input {
+    background-color: #b3b6b7;
+    border: none !important;
+    border-radius: 3px;
+    color: #0d2d3e;
+    font-size: 16px;
+    padding: 10px 10px;
+    width: 100% !important;
+}
+.body-container--la-vista form .hs-form-field {
+    margin-bottom: 15px;
+}
 
 /* =============================================================================
    Modelos de casas
-   ============================================================================= */
-   .splide__controls {
+============================================================================= */
+.splide__controls {
     margin-top: -32px !important;
 }
 .lv-floor-title {
@@ -222,6 +244,74 @@ body,.body-container--la-vista *,
 
 .lv-floor-block__list li:last-child {
   margin-bottom: 0;
+}
+
+/* =============================================================================
+   Navegación mobile
+   ============================================================================= */
+
+@media (max-width: 767px) {
+  /* Mostrar hamburguesa */
+  .lv-nav__burger {
+    display: flex !important;
+    order: 2;
+  }
+
+  /* Ocultar la nav en mobile hasta que se abra */
+  .lv-nav {
+    background-color: #ffffff;
+    border-bottom: 3px solid var(--lv-primary);
+    display: none;
+    left: 0;
+    padding: 0.75rem 1.25rem 1rem;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 99;
+  }
+
+  .lv-nav.lv-nav--open {
+    display: block;
+  }
+
+  .lv-nav__list {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lv-nav__link {
+    border-bottom: 1px solid rgba(13, 45, 62, 0.1);
+    display: block;
+    padding: 0.7rem 0;
+  }
+
+  .lv-nav__item:last-child .lv-nav__link {
+    border-bottom: none;
+  }
+
+  /* Header en una sola línea */
+  .header--la-vista .header__container {
+    flex-wrap: nowrap;
+    padding: 8px 16px;
+        flex-direction: row;
+  }
+
+  /* Ocultar CTA en mobile — acceso al formulario vía menú */
+  .header--la-vista .cta-header {
+    display: none;
+  }
+
+  /* Asegurar que header__right sea relative para el dropdown */
+  .header--la-vista .header__right {
+    position: relative;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* El wrapper de HubSpot no debe romper el flex */
+  .header--la-vista .header__right > .hs_cos_wrapper {
+    display: contents;
+  }
 }
 
 @media (max-width: 767px) {

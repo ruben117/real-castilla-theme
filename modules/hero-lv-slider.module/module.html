@@ -3,29 +3,26 @@
 {% set autoplay = module.settings.autoplay %}
 {% set interval = module.settings.interval_ms|default(6000) %}
 
-{# ── Imágenes fallback por slide ── #}
+{# ── Imágenes fallback (cuando el editor no tiene imagen cargada) ── #}
 {% set fb_bg = [
   get_asset_url("../../images/lv-hero-queretaro-vista.jpg"),
   get_asset_url("../../images/lv-hero-queretaro-vista-2.jpg")
 ] %}
 
-{# ── Slides fallback completos (2 slides) ── #}
+{# ── Slides fallback HubL (cuando module.slides está vacío) ── #}
 {% set fb_slides = [
   {
-    "heading_slide":       "<h1>Casas en venta<br>en Querétaro<br>En La Vista residencial</h1>",
-    "body":          "<p>Exclusividad en cada espacio<br>a 12 minutos de Los Arcos</p>",
-    "cta_text":      "¡Reserva tu visita!",
-    "gradient_stop": 65
+    "heading_slide": "<h1>Casas en venta<br>en Querétaro<br>En La Vista residencial</h1>",
+    "body_hero":          "<p>Exclusividad en cada espacio<br>a 12 minutos de Los Arcos</p>",
+    "cta_text":      "¡Reserva tu visita!"
   },
   {
-    "heading_slide":       "<h1>El hogar que<br>siempre imaginaste<br>en La Vista</h1>",
-    "body":          "<p>Espacios diseñados para tu familia<br>en el corazón de Querétaro</p>",
-    "cta_text":      "¡Reserva tu visita!",
-    "gradient_stop": 60
+    "heading_slide": "<h1>El hogar que<br>siempre imaginaste<br>en La Vista</h1>",
+    "body_hero":          "<p>Espacios diseñados para tu familia<br>en el corazón de Querétaro</p>",
+    "cta_text":      "¡Reserva tu visita!"
   }
 ] %}
 
-{# Usar slides del editor si existen, de lo contrario los 2 fallback #}
 {% set render_slides = slides if slides|length > 0 else fb_slides %}
 
 {% require_css %}
@@ -49,48 +46,38 @@
 
     {% for s in render_slides %}
 
-      {# ── Imagen de fondo: usa la del editor o el fallback del índice correspondiente ── #}
+      {# ── Imagen de fondo: la del editor o el fallback del índice ── #}
       {% set fb_idx = loop.index0 if loop.index0 < fb_bg|length else (fb_bg|length - 1) %}
       {% set bg_src = (s.bg_image and s.bg_image.src) ? s.bg_image.src : fb_bg[fb_idx] %}
+      {% set bg_alt = (s.bg_image and s.bg_image.alt) ? s.bg_image.alt : '' %}
 
       {# ── Contenido ── #}
       {% set heading_html = (s.heading_slide and s.heading_slide|length > 0) ? s.heading_slide : "<h1>La Vista Residencial</h1>" %}
-      {% set body_html    = (s.body and s.body|length > 0) ? s.body : "" %}
+      {% set body_html    = (s.body_hero and s.body_hero|length > 0) ? s.body_hero : "" %}
       {% set cta_text     = (s.cta_text and s.cta_text|length > 0) ? s.cta_text : "" %}
 
       {# ── CTA link ── #}
-      {% set btn         = s.cta_link %}
-      {% set btn_href    = (btn and btn.url and btn.url.href) ? btn.url.href : "#formulario" %}
-      {% set btn_newtab  = (btn and btn.open_in_new_tab) ? ' target="_blank" rel="noopener"' : '' %}
-
-      {# ── Gradiente ── #}
-      {% set g_color   = (s.gradient_color and s.gradient_color.color) ? s.gradient_color.color : '#0D2D3E' %}
-      {% set g_opacity = (s.gradient_color and s.gradient_color.opacity is not none) ? (s.gradient_color.opacity / 100) : 0.95 %}
-      {% set g_stop    = s.gradient_stop|default(65) %}
+      {% set btn        = s.cta_link %}
+      {% set btn_href   = (btn and btn.url and btn.url.href) ? btn.url.href : "#formulario" %}
+      {% set btn_newtab = (btn and btn.open_in_new_tab) ? ' target="_blank" rel="noopener"' : '' %}
 
       <article
         class="lv-hero__slide{% if loop.first %} is-active{% endif %}"
         data-lv-slide
         aria-hidden="{{ loop.first ? 'false' : 'true' }}"
       >
-        {# Imagen de fondo — por debajo del gradiente #}
+
+        {# Imagen de fondo — el degradado ya viene integrado en el archivo de imagen #}
         <img
           class="lv-hero__bg"
           src="{{ bg_src|escape_url }}"
-          alt="{{ (s.bg_image and s.bg_image.alt) ? s.bg_image.alt : '' }}"
+          alt="{{ bg_alt }}"
           loading="{% if loop.first %}eager{% else %}lazy{% endif %}"
         >
 
-        {# Gradiente independiente: color sólido → transparente de izq a der #}
-        <div
-          class="lv-hero__gradient"
-          style="background: linear-gradient(90deg, rgba({{ g_color|convert_rgb }}, {{ g_opacity }}) 0%, rgba({{ g_color|convert_rgb }}, {{ g_opacity }}) {{ g_stop }}%, transparent 100%);"
-          aria-hidden="true"
-        ></div>
-
-        {# Contenido sobre el gradiente #}
+        {# Contenido sobre la imagen #}
         <div class="lv-hero__inner content-wrapper">
-          <div class="lv-hero__content hero-custom-typography">
+          <div class="lv-hero__content">
 
             <div class="lv-hero__heading">
               {{ heading_html }}
@@ -117,7 +104,7 @@
 
   </div>{# /.lv-hero__track #}
 
-  {# Bullets — sólo si hay más de 1 slide #}
+  {# Bullets de navegación — sólo si hay más de 1 slide #}
   {% if render_slides|length > 1 %}
   <div class="lv-hero__bullets" role="tablist" aria-label="Navegación del hero">
     {% for _ in render_slides %}
