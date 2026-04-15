@@ -1,0 +1,94 @@
+{% set uid = name|replace(" ","_")|replace("-","_") %}
+
+{# ── Ítems ── #}
+{% set items = module.items if (module.items and module.items|length > 0) else [
+  {"title": "Cancha de pádel"},
+  {"title": "Cancha de basketball"},
+  {"title": "Cancha de fútbol 5"},
+  {"title": "4.2 Ha. Áreas verdes"}
+] %}
+
+{# ── Config ── #}
+{% set items_desktop = module.settings.items_desktop|default(4) %}
+{% set items_mobile  = module.settings.items_mobile|default(2) %}
+
+{# ── Estilos calculados ── #}
+{% set bg_color      = module.styles.bg_color.color      | default('#0D2D3E') %}
+{% set arrow_color   = module.styles.arrow_color.color   | default('#ffffff') %}
+{% set title_color   = module.styles.title_color.color   | default('#ffffff') %}
+{% set image_size    = module.styles.image_size          | default(160) %}
+{% set title_size    = module.styles.title_size          | default(15) %}
+{% set title_spacing = module.styles.title_spacing       | default(14) %}
+{% set arrow_size    = module.styles.arrow_size          | default(20) %}
+{% set section_pad   = module.styles.section_padding     | default(48) %}
+
+<section
+  class="cs cs--{{ uid }}"
+  data-cs
+  style="
+    --cs-bg:            {{ bg_color }};
+    --cs-arrow-color:   {{ arrow_color }};
+    --cs-title-color:   {{ title_color }};
+    --cs-img-size:      {{ image_size }}px;
+    --cs-title-size:    {{ title_size }}px;
+    --cs-title-gap:     {{ title_spacing }}px;
+    --cs-arrow-size:    {{ arrow_size }}px;
+    --cs-pad-v:         {{ section_pad }}px;
+    --cs-count-desktop: {{ items_desktop }};
+    --cs-count-mobile:  {{ items_mobile }};
+  "
+>
+  <div class="content-wrapper cs__inner">
+
+    {# ── Flecha anterior ── #}
+    <button class="cs__btn cs__btn--prev" type="button" aria-label="Anterior" data-cs-prev disabled>
+      {% icon
+        name="{{ module.navigation.prev_icon.name }}"
+        style="{{ module.navigation.prev_icon.type }}"
+        unicode="{{ module.navigation.prev_icon.unicode }}"
+        icon_set="{{ module.navigation.prev_icon.icon_set }}"
+      %}
+      
+    </button>
+
+    {# ── Track ── #}
+    <div class="cs__viewport" aria-live="polite">
+      <ul class="cs__track" data-cs-track>
+        {% for item in items %}
+          <li class="cs__slide" data-cs-slide>
+            <div class="cs__img-wrap">
+              {% if item.image and item.image.src %}
+                <img
+                  class="cs__img"
+                  src="{{ item.image.src|escape_url }}"
+                  alt="{{ item.image.alt|default(item.title) }}"
+                  loading="lazy"
+                  width="{{ item.image.width|default('') }}"
+                  height="{{ item.image.height|default('') }}"
+                >
+              {% else %}
+                {# Placeholder si no hay imagen #}
+                <div class="cs__img-placeholder" aria-hidden="true"></div>
+              {% endif %}
+            </div>
+            {% if item.title %}
+              <p class="cs__title">{{ item.title }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {# ── Flecha siguiente ── #}
+    <button class="cs__btn cs__btn--next" type="button" aria-label="Siguiente" data-cs-next>
+      {% icon
+        name="{{ module.navigation.next_icon.name }}"
+        style="{{ module.navigation.next_icon.type }}"
+        unicode="{{ module.navigation.next_icon.unicode }}"
+        icon_set="{{ module.navigation.next_icon.icon_set }}"
+      %}
+    </button>
+
+  </div>{# /.cs__inner #}
+</section>
+

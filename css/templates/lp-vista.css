@@ -165,7 +165,22 @@ body,.body-container--la-vista *,
 .body-container--la-vista form .hs-form-field {
     margin-bottom: 15px;
 }
-
+@media screen and (max-width:767px){
+  .cell_17749803741654-padding {
+    max-width: 90%;
+    margin: 0px auto;
+    text-align: center;
+  }
+  .cell_17749803741654-padding *,
+  .body-container--la-vista h1,
+  .body-container--la-vista h2,
+  .body-container--la-vista h3,
+  .body-container--la-vista h4,
+  .body-container--la-vista p,
+  .body-container--la-vista .font-thin {
+    margin: 0 auto;
+  }
+}
 /* =============================================================================
    Modelos de casas
 ============================================================================= */
@@ -245,6 +260,54 @@ body,.body-container--la-vista *,
 .lv-floor-block__list li:last-child {
   margin-bottom: 0;
 }
+.show-mobile{
+  display:none;
+}
+@media (max-width: 767px) {
+  .show-mobile,
+  .show-mobile * {
+    display:block !important;
+  }
+  #hs_cos_wrapper_widget_1774985433965 .tp-house-card__subtitle,
+  #hs_cos_wrapper_widget_1774985433965 .tp-house-card__title,
+  #hs_cos_wrapper_module_17756942290003 .tp-house-card__subtitle,
+  #hs_cos_wrapper_module_17756942290003 .tp-house-card__title,
+  #hs_cos_wrapper_module_177499787819710 .tp-house-card__subtitle,
+  #hs_cos_wrapper_module_177499787819710 .tp-house-card__title,
+  #hs_cos_wrapper_module_17756950644093 .tp-house-card__subtitle,
+  #hs_cos_wrapper_module_17756950644093 .tp-house-card__title
+  {
+    display:none;
+  }
+  .widget_1774987760137-padding > #hs_cos_wrapper_widget_1774987760137,
+  .widget_1774987760137-padding > #hs_cos_wrapper_widget_1774987760137 span,
+  .module_17749968504418-padding > #hs_cos_wrapper_module_17749968504418,
+  .module_17749968504418-padding > #hs_cos_wrapper_module_17749968504418 span,
+  .module_17749978781977-padding > #hs_cos_wrapper_module_17749978781977,
+  .module_17749978781977-padding > #hs_cos_wrapper_module_17749978781977 span,
+  .module_17749977958319-padding > #hs_cos_wrapper_module_17749977958319,
+  .module_17749977958319-padding > #hs_cos_wrapper_module_17749977958319 span
+  {
+    font-size: 8px !important;
+    line-height: 9px !important;
+  }
+  #hs_cos_wrapper_widget_1775066065036{
+    padding: 20px 0px !important;
+    p{
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 11px;
+      text-align: center;
+    }
+  }
+  
+  .img-directions img{
+    height: 29px !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0px 10px !important;     
+  }
+}
 
 /* =============================================================================
    Navegación mobile
@@ -293,7 +356,7 @@ body,.body-container--la-vista *,
   .header--la-vista .header__container {
     flex-wrap: nowrap;
     padding: 8px 16px;
-        flex-direction: row;
+    flex-direction: column;
   }
 
   /* Ocultar CTA en mobile — acceso al formulario vía menú */

@@ -1,0 +1,151 @@
+/* =============================================================================
+   Circular Slider — amenidades con imágenes circulares
+   ============================================================================= */
+
+.cs {
+  background-color: var(--cs-bg, #0D2D3E);
+  overflow: hidden;
+  padding: var(--cs-pad-v, 48px) 0;
+}
+
+/* Inner: arrow | viewport | arrow en una sola fila */
+.cs__inner {
+  align-items: center;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Viewport / ventana del track ── */
+.cs__viewport {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ── Track (lista de slides) ── */
+.cs__track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* ── Slide individual ── */
+.cs__slide {
+  align-items: center;
+  display: flex;
+  flex: 0 0 calc(100% / var(--cs-count-desktop, 4));
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+/* ── Contenedor de imagen circular ── */
+.cs__img-wrap {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: var(--cs-img-size, 160px);
+  max-width: 100%;
+}
+
+.cs__img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+/* Placeholder cuando no hay imagen */
+.cs__img-placeholder {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Título ── */
+.cs__title {
+  color: var(--cs-title-color, #ffffff);
+  font-size: var(--cs-title-size, 15px);
+  font-weight: 400;
+  line-height: 1.4;
+  margin: var(--cs-title-gap, 14px) 0 0;
+  text-align: center;
+}
+
+/* ── Botones de navegación ── */
+.cs__btn {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--cs-arrow-color, #ffffff);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  font-size: var(--cs-arrow-size, 20px);
+  justify-content: center;
+  opacity: 1;
+  padding: 4px 10px;
+  transition: opacity 0.2s ease;
+}
+.cs__btn:hover {
+    background: none;
+    border: none;
+}
+
+.cs__btn svg{
+  fill: var(--cs-arrow-color, #ffffff);
+}
+
+.cs__btn:disabled {
+  cursor: default;
+  opacity: 0.25;
+  pointer-events: none;
+  background: none;
+}
+
+.cs__btn:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+/* FontAwesome icon inside button */
+.cs__btn i,
+.cs__btn svg {
+  display: block;
+  font-size: inherit;
+  height: 1em;
+  width: 0.6em;
+}
+
+/* =============================================================================
+   Responsive
+   ============================================================================= */
+
+@media (max-width: 767px) {
+  .cs{
+    padding: 30px 0px;
+  }
+  .cs__inner{
+    padding:0;
+  }
+  .cs__slide {
+    flex: 0 0 calc(100% / var(--cs-count-mobile, 2));
+    padding: 0 8px;
+  }
+
+  /* En móvil la imagen se escala en relación al número de items visibles */
+  .cs__img-wrap {
+    width: min(var(--cs-img-size, 160px), calc((70vw - 40px) / var(--cs-count-mobile, 2)));
+  }
+
+  .cs__btn {
+    padding: 8px 10px;
+    font-size: calc(var(--cs-arrow-size, 20px) * 0.85);
+  }
+
+  .cs__title {
+    font-size: calc(var(--cs-title-size, 15px) * 0.9);
+  }
+}
